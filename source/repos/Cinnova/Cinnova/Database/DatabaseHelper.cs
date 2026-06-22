@@ -32,7 +32,7 @@ namespace Cinnova.Database
             }
         }
 
-        public static DataTable ExecuteQuery(string query)
+        public static DataTable ExecuteQuery(string query , params SqlParameter[] parameters)
         {
             DataTable dt = new DataTable();
             try
@@ -40,7 +40,14 @@ namespace Cinnova.Database
                 using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
-                    SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    if (parameters != null) 
+                    {
+                        cmd.Parameters.AddRange(parameters);
+                    }
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
                     da.Fill(dt);
                 }
             }
