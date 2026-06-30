@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tokem\\source\\repos\\Cinnova\\Cinnova\\Cinnova.csproj": {}
+    "C:\\Users\\Gihen Rathnayake\\Desktop\\Cinnova\\source\\repos\\Cinnova\\Cinnova\\Cinnova.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tokem\\source\\repos\\Cinnova\\Cinnova\\Cinnova.csproj": {
+    "C:\\Users\\Gihen Rathnayake\\Desktop\\Cinnova\\source\\repos\\Cinnova\\Cinnova\\Cinnova.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tokem\\source\\repos\\Cinnova\\Cinnova\\Cinnova.csproj",
+        "projectUniqueName": "C:\\Users\\Gihen Rathnayake\\Desktop\\Cinnova\\source\\repos\\Cinnova\\Cinnova\\Cinnova.csproj",
         "projectName": "Cinnova",
-        "projectPath": "C:\\Users\\tokem\\source\\repos\\Cinnova\\Cinnova\\Cinnova.csproj",
-        "packagesPath": "C:\\Users\\tokem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tokem\\source\\repos\\Cinnova\\Cinnova\\obj\\",
+        "projectPath": "C:\\Users\\Gihen Rathnayake\\Desktop\\Cinnova\\source\\repos\\Cinnova\\Cinnova\\Cinnova.csproj",
+        "packagesPath": "C:\\Users\\Gihen Rathnayake\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Gihen Rathnayake\\Desktop\\Cinnova\\source\\repos\\Cinnova\\Cinnova\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\tokem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Gihen Rathnayake\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
