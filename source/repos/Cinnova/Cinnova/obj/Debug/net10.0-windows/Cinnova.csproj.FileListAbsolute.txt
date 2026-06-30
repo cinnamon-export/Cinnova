@@ -95,8 +95,7 @@ C:\Users\nethu\Cinnova\source\repos\Cinnova\Cinnova\bin\Debug\net10.0-windows\ru
 C:\Users\nethu\Cinnova\source\repos\Cinnova\Cinnova\bin\Debug\net10.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\nethu\Cinnova\source\repos\Cinnova\Cinnova\bin\Debug\net10.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\nethu\Cinnova\source\repos\Cinnova\Cinnova\obj\Debug\net10.0-windows\Cinnova.csproj.AssemblyReference.cache
-C:\Users\nethu\Cinnova\source\repos\Cinnova\Cinnova\obj\Debug\net10.0-windows\Cinnova.Forms.Dashboardform.resources
-C:\Users\nethu\Cinnova\source\repos\Cinnova\Cinnova\obj\Debug\net10.0-windows\Cinnova.Forms.LoginForm.resources
+C:\Users\nethu\Cinnova\source\repos\Cinnova\Cinnova\obj\Debug\net10.0-windows\Cinnova.Forms.UserManagementForm.resources
 C:\Users\nethu\Cinnova\source\repos\Cinnova\Cinnova\obj\Debug\net10.0-windows\Cinnova.csproj.GenerateResource.cache
 C:\Users\nethu\Cinnova\source\repos\Cinnova\Cinnova\obj\Debug\net10.0-windows\Cinnova.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\nethu\Cinnova\source\repos\Cinnova\Cinnova\obj\Debug\net10.0-windows\Cinnova.AssemblyInfoInputs.cache
@@ -109,3 +108,4 @@ C:\Users\nethu\Cinnova\source\repos\Cinnova\Cinnova\obj\Debug\net10.0-windows\re
 C:\Users\nethu\Cinnova\source\repos\Cinnova\Cinnova\obj\Debug\net10.0-windows\Cinnova.pdb
 C:\Users\nethu\Cinnova\source\repos\Cinnova\Cinnova\obj\Debug\net10.0-windows\Cinnova.genruntimeconfig.cache
 C:\Users\nethu\Cinnova\source\repos\Cinnova\Cinnova\obj\Debug\net10.0-windows\ref\Cinnova.dll
+C:\Users\nethu\Cinnova\source\repos\Cinnova\Cinnova\obj\Debug\net10.0-windows\Cinnova.Program.resources

@@ -3,7 +3,7 @@ using Cinnova.Database;
 using Cinnova.Forms;
 namespace Cinnova
 {
-    public partial class LoginForm : Form
+    internal static class Program
     {
         /// <summary>
         ///  The main entry point for the application.
@@ -20,7 +20,7 @@ namespace Cinnova
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new LoginForm());
+            Application.Run(new UserManagementForm());
         }
     }
 }
