@@ -3,7 +3,7 @@ using Cinnova.Database;
 using Cinnova.Forms;
 namespace Cinnova
 {
-    public partial class LoginForm : Form
+    public partial class program
     {
         /// <summary>
         ///  The main entry point for the application.
@@ -19,7 +19,8 @@ namespace Cinnova
                 MessageBox.Show("Database Connection Failed!");
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
         }
     }

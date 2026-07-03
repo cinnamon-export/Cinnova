@@ -28,250 +28,242 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pnlHeader = new Panel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             lblleaf = new Label();
+            lbltitle = new Label();
             lblsubtitle = new Label();
-            lblname = new Label();
-            lblusername = new Label();
-            lblpassword = new Label();
-            lblrole = new Label();
+            panelcard = new Panel();
+            btnsignin = new Button();
             cmbrole = new ComboBox();
-            btnlogin = new Button();
-            pnlusername = new Panel();
-            txtusername = new TextBox();
-            lblusericon = new Label();
-            pnlpassword = new Panel();
+            cmbrolde = new Label();
+            lbliconpassword = new Label();
+            lbliconname = new Label();
+            lblpassword = new Label();
             txtpassword = new TextBox();
-            lblpasswordicon = new Label();
-            pnlHeader.SuspendLayout();
-            pnlusername.SuspendLayout();
-            pnlpassword.SuspendLayout();
+            txtusername = new TextBox();
+            lblusername = new Label();
+            lbldesc = new Label();
+            lblwelcome = new Label();
+            panelcard.SuspendLayout();
             SuspendLayout();
-            // 
-            // pnlHeader
-            // 
-            pnlHeader.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            pnlHeader.BackColor = Color.FromArgb(65, 36, 2);
-            pnlHeader.Controls.Add(lblleaf);
-            pnlHeader.Controls.Add(lblsubtitle);
-            pnlHeader.Controls.Add(lblname);
-            pnlHeader.Location = new Point(0, 0);
-            pnlHeader.Name = "pnlHeader";
-            pnlHeader.Size = new Size(400, 120);
-            pnlHeader.TabIndex = 0;
             // 
             // lblleaf
             // 
             lblleaf.AutoSize = true;
-            lblleaf.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblleaf.ForeColor = Color.YellowGreen;
-            lblleaf.Location = new Point(166, 10);
+            lblleaf.BackColor = Color.Transparent;
+            lblleaf.Font = new Font("Segoe UI", 22.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblleaf.ForeColor = Color.LightGreen;
+            lblleaf.Location = new Point(431, 0);
             lblleaf.Name = "lblleaf";
-            lblleaf.Size = new Size(78, 54);
-            lblleaf.TabIndex = 2;
+            lblleaf.Size = new Size(73, 50);
+            lblleaf.TabIndex = 0;
             lblleaf.Text = "🌿";
+            lblleaf.Click += lblleaf_Click;
+            // 
+            // lbltitle
+            // 
+            lbltitle.AutoSize = true;
+            lbltitle.BackColor = Color.Transparent;
+            lbltitle.Font = new Font("Segoe UI", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbltitle.ForeColor = Color.Wheat;
+            lbltitle.Location = new Point(383, 46);
+            lbltitle.Name = "lbltitle";
+            lbltitle.Size = new Size(162, 50);
+            lbltitle.TabIndex = 1;
+            lbltitle.Text = "Cinnova";
+            lbltitle.Click += label1_Click;
             // 
             // lblsubtitle
             // 
             lblsubtitle.AutoSize = true;
-            lblsubtitle.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblsubtitle.ForeColor = Color.FromArgb(250, 199, 117);
-            lblsubtitle.Location = new Point(115, 95);
+            lblsubtitle.BackColor = Color.Transparent;
+            lblsubtitle.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblsubtitle.ForeColor = Color.Wheat;
+            lblsubtitle.Location = new Point(340, 94);
             lblsubtitle.Name = "lblsubtitle";
-            lblsubtitle.Size = new Size(182, 17);
-            lblsubtitle.TabIndex = 1;
-            lblsubtitle.Text = "Cinnamon Export Managment";
+            lblsubtitle.Size = new Size(262, 20);
+            lblsubtitle.TabIndex = 2;
+            lblsubtitle.Text = "CINNAMON EXPORT MANAGMENT";
+            lblsubtitle.Click += lblsubtitle_Click;
             // 
-            // lblname
+            // panelcard
             // 
-            lblname.AutoSize = true;
-            lblname.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblname.ForeColor = Color.FromArgb(250, 238, 218);
-            lblname.Location = new Point(142, 57);
-            lblname.Name = "lblname";
-            lblname.Size = new Size(123, 38);
-            lblname.TabIndex = 0;
-            lblname.Text = "Cinnova";
-            lblname.Click += lblname_Click;
+            panelcard.Controls.Add(btnsignin);
+            panelcard.Controls.Add(cmbrole);
+            panelcard.Controls.Add(cmbrolde);
+            panelcard.Controls.Add(lbliconpassword);
+            panelcard.Controls.Add(lbliconname);
+            panelcard.Controls.Add(lblpassword);
+            panelcard.Controls.Add(txtpassword);
+            panelcard.Controls.Add(txtusername);
+            panelcard.Controls.Add(lblusername);
+            panelcard.Controls.Add(lbldesc);
+            panelcard.Controls.Add(lblwelcome);
+            panelcard.Location = new Point(269, 124);
+            panelcard.Name = "panelcard";
+            panelcard.Size = new Size(388, 387);
+            panelcard.TabIndex = 3;
+            panelcard.Paint += panelcard_Paint;
             // 
-            // lblusername
+            // btnsignin
             // 
-            lblusername.AutoSize = true;
-            lblusername.Font = new Font("Trebuchet MS", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblusername.ForeColor = Color.FromArgb(133, 79, 11);
-            lblusername.Location = new Point(40, 150);
-            lblusername.Name = "lblusername";
-            lblusername.Size = new Size(101, 23);
-            lblusername.TabIndex = 1;
-            lblusername.Text = "Username :";
+            btnsignin.BackColor = Color.FromArgb(120, 54, 22);
+            btnsignin.FlatStyle = FlatStyle.Flat;
+            btnsignin.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnsignin.ForeColor = Color.White;
+            btnsignin.Location = new Point(111, 326);
+            btnsignin.Name = "btnsignin";
+            btnsignin.Size = new Size(157, 40);
+            btnsignin.TabIndex = 10;
+            btnsignin.Text = "Sign In";
+            btnsignin.UseVisualStyleBackColor = false;
+            btnsignin.Click += btnsignin_Click;
+            // 
+            // cmbrole
+            // 
+            cmbrole.FormattingEnabled = true;
+            cmbrole.Items.AddRange(new object[] { "Owner", "Manager", "Staff" });
+            cmbrole.Location = new Point(14, 263);
+            cmbrole.Name = "cmbrole";
+            cmbrole.Size = new Size(287, 28);
+            cmbrole.TabIndex = 9;
+            cmbrole.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // cmbrolde
+            // 
+            cmbrolde.AutoSize = true;
+            cmbrolde.Location = new Point(14, 228);
+            cmbrolde.Name = "cmbrolde";
+            cmbrolde.Size = new Size(39, 20);
+            cmbrolde.TabIndex = 8;
+            cmbrolde.Text = "Role";
+            // 
+            // lbliconpassword
+            // 
+            lbliconpassword.AutoSize = true;
+            lbliconpassword.BackColor = Color.FromArgb(250, 238, 218);
+            lbliconpassword.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbliconpassword.Location = new Point(15, 186);
+            lbliconpassword.Name = "lbliconpassword";
+            lbliconpassword.Size = new Size(26, 17);
+            lbliconpassword.TabIndex = 7;
+            lbliconpassword.Text = "🔒";
+            // 
+            // lbliconname
+            // 
+            lbliconname.AutoSize = true;
+            lbliconname.BackColor = Color.FromArgb(250, 238, 218);
+            lbliconname.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbliconname.Location = new Point(15, 114);
+            lbliconname.Name = "lbliconname";
+            lbliconname.Size = new Size(26, 17);
+            lbliconname.TabIndex = 6;
+            lbliconname.Text = "👤";
             // 
             // lblpassword
             // 
             lblpassword.AutoSize = true;
-            lblpassword.Font = new Font("Trebuchet MS", 10.2F, FontStyle.Bold);
-            lblpassword.ForeColor = Color.FromArgb(133, 79, 11);
-            lblpassword.Location = new Point(40, 225);
+            lblpassword.Location = new Point(14, 155);
             lblpassword.Name = "lblpassword";
-            lblpassword.Size = new Size(94, 23);
-            lblpassword.TabIndex = 3;
-            lblpassword.Text = "Password :";
-            // 
-            // lblrole
-            // 
-            lblrole.AutoSize = true;
-            lblrole.Font = new Font("Trebuchet MS", 10.2F, FontStyle.Bold);
-            lblrole.ForeColor = Color.FromArgb(133, 79, 11);
-            lblrole.Location = new Point(40, 313);
-            lblrole.Name = "lblrole";
-            lblrole.Size = new Size(56, 23);
-            lblrole.TabIndex = 5;
-            lblrole.Text = "Role :";
-            // 
-            // cmbrole
-            // 
-            cmbrole.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            cmbrole.BackColor = Color.FromArgb(250, 238, 218);
-            cmbrole.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbrole.ForeColor = Color.FromArgb(65, 36, 2);
-            cmbrole.FormattingEnabled = true;
-            cmbrole.Items.AddRange(new object[] { "Admin", "Manager", "Staff" });
-            cmbrole.Location = new Point(39, 351);
-            cmbrole.Name = "cmbrole";
-            cmbrole.Size = new Size(310, 28);
-            cmbrole.TabIndex = 6;
-            // 
-            // btnlogin
-            // 
-            btnlogin.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnlogin.BackColor = Color.FromArgb(99, 56, 6);
-            btnlogin.FlatStyle = FlatStyle.Flat;
-            btnlogin.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnlogin.ForeColor = Color.FromArgb(250, 238, 218);
-            btnlogin.Location = new Point(40, 460);
-            btnlogin.Name = "btnlogin";
-            btnlogin.Size = new Size(264, 40);
-            btnlogin.TabIndex = 7;
-            btnlogin.Text = "Sign In";
-            btnlogin.UseVisualStyleBackColor = false;
-            btnlogin.Click += btnlogin_Click;
-            // 
-            // pnlusername
-            // 
-            pnlusername.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            pnlusername.BackColor = Color.FromArgb(250, 238, 218);
-            pnlusername.BorderStyle = BorderStyle.FixedSingle;
-            pnlusername.Controls.Add(txtusername);
-            pnlusername.Controls.Add(lblusericon);
-            pnlusername.Location = new Point(40, 182);
-            pnlusername.Name = "pnlusername";
-            pnlusername.Size = new Size(305, 30);
-            pnlusername.TabIndex = 9;
-            // 
-            // txtusername
-            // 
-            txtusername.BackColor = Color.FromArgb(250, 238, 218);
-            txtusername.BorderStyle = BorderStyle.None;
-            txtusername.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtusername.Location = new Point(48, 5);
-            txtusername.Name = "txtusername";
-            txtusername.Size = new Size(255, 23);
-            txtusername.TabIndex = 1;
-            txtusername.Text = "Enter Username";
-            txtusername.TextChanged += txtusername_TextChanged;
-            txtusername.Enter += txtusername_Enter;
-            txtusername.Leave += txtusername_Leave;
-            // 
-            // lblusericon
-            // 
-            lblusericon.AutoSize = true;
-            lblusericon.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblusericon.Location = new Point(3, 2);
-            lblusericon.Name = "lblusericon";
-            lblusericon.Size = new Size(33, 23);
-            lblusericon.TabIndex = 0;
-            lblusericon.Text = "👤";
-            // 
-            // pnlpassword
-            // 
-            pnlpassword.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            pnlpassword.BackColor = Color.FromArgb(250, 238, 218);
-            pnlpassword.BorderStyle = BorderStyle.FixedSingle;
-            pnlpassword.Controls.Add(txtpassword);
-            pnlpassword.Controls.Add(lblpasswordicon);
-            pnlpassword.Location = new Point(40, 258);
-            pnlpassword.Name = "pnlpassword";
-            pnlpassword.Size = new Size(305, 30);
-            pnlpassword.TabIndex = 11;
+            lblpassword.Size = new Size(70, 20);
+            lblpassword.TabIndex = 5;
+            lblpassword.Text = "Password";
             // 
             // txtpassword
             // 
             txtpassword.BackColor = Color.FromArgb(250, 238, 218);
-            txtpassword.BorderStyle = BorderStyle.None;
+            txtpassword.BorderStyle = BorderStyle.FixedSingle;
             txtpassword.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtpassword.Location = new Point(48, 5);
+            txtpassword.Location = new Point(14, 180);
             txtpassword.Name = "txtpassword";
-            txtpassword.Size = new Size(255, 23);
-            txtpassword.TabIndex = 2;
-            txtpassword.Text = "Enter Password";
-            txtpassword.Enter += txtpassword_Enter;
-            txtpassword.Leave += txtpassword_Leave;
+            txtpassword.PasswordChar = '.';
+            txtpassword.PlaceholderText = "          Enter password";
+            txtpassword.Size = new Size(287, 30);
+            txtpassword.TabIndex = 4;
             // 
-            // lblpasswordicon
+            // txtusername
             // 
-            lblpasswordicon.AutoSize = true;
-            lblpasswordicon.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblpasswordicon.Location = new Point(-1, 2);
-            lblpasswordicon.Name = "lblpasswordicon";
-            lblpasswordicon.Size = new Size(38, 23);
-            lblpasswordicon.TabIndex = 12;
-            lblpasswordicon.Text = " 🔒";
+            txtusername.BackColor = Color.FromArgb(250, 238, 218);
+            txtusername.BorderStyle = BorderStyle.FixedSingle;
+            txtusername.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtusername.Location = new Point(14, 107);
+            txtusername.Name = "txtusername";
+            txtusername.PlaceholderText = "         Enter username";
+            txtusername.Size = new Size(287, 30);
+            txtusername.TabIndex = 3;
+            // 
+            // lblusername
+            // 
+            lblusername.AutoSize = true;
+            lblusername.Location = new Point(14, 79);
+            lblusername.Name = "lblusername";
+            lblusername.Size = new Size(75, 20);
+            lblusername.TabIndex = 2;
+            lblusername.Text = "Username";
+            // 
+            // lbldesc
+            // 
+            lbldesc.AutoSize = true;
+            lbldesc.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbldesc.ForeColor = Color.Gray;
+            lbldesc.Location = new Point(8, 40);
+            lbldesc.Name = "lbldesc";
+            lbldesc.Size = new Size(328, 17);
+            lbldesc.TabIndex = 1;
+            lbldesc.Text = "Enter your credentials to access the export dashboard.";
+            // 
+            // lblwelcome
+            // 
+            lblwelcome.AutoSize = true;
+            lblwelcome.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblwelcome.ForeColor = Color.FromArgb(128, 64, 64);
+            lblwelcome.Location = new Point(4, 3);
+            lblwelcome.Name = "lblwelcome";
+            lblwelcome.Size = new Size(208, 38);
+            lblwelcome.TabIndex = 0;
+            lblwelcome.Text = "Welcome Back";
             // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(255, 248, 240);
-            ClientSize = new Size(382, 513);
-            Controls.Add(pnlpassword);
-            Controls.Add(pnlusername);
-            Controls.Add(btnlogin);
-            Controls.Add(cmbrole);
-            Controls.Add(lblrole);
-            Controls.Add(lblpassword);
-            Controls.Add(lblusername);
-            Controls.Add(pnlHeader);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
-            MaximizeBox = false;
+            BackColor = Color.White;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(882, 533);
+            Controls.Add(lblsubtitle);
+            Controls.Add(panelcard);
+            Controls.Add(lbltitle);
+            Controls.Add(lblleaf);
+            DoubleBuffered = true;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cinnova-Login";
             Load += LoginForm_Load;
-            pnlHeader.ResumeLayout(false);
-            pnlHeader.PerformLayout();
-            pnlusername.ResumeLayout(false);
-            pnlusername.PerformLayout();
-            pnlpassword.ResumeLayout(false);
-            pnlpassword.PerformLayout();
+            Resize += LoginForm_Resize;
+            panelcard.ResumeLayout(false);
+            panelcard.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Panel pnlHeader;
-        private Label lblname;
-        private Label lblsubtitle;
-        private Label lblusername;
-        private Label lblpassword;
-        private Label lblrole;
-        private ComboBox cmbrole;
-        private Button btnlogin;
         private Label lblleaf;
-        private Panel pnlusername;
-        private Label lblusericon;
-        private Panel pnlpassword;
+        private Label lbltitle;
+        private Label lblsubtitle;
+        private Panel panelcard;
+        private Label lbldesc;
+        private Label lblwelcome;
         private TextBox txtusername;
+        private Label lblusername;
+        private Label lbliconpassword;
+        private Label lbliconname;
+        private Label lblpassword;
         private TextBox txtpassword;
-        private Label lblpasswordicon;
+        private ComboBox cmbrole;
+        private Label cmbrolde;
+        private Button btnsignin;
     }
 }
