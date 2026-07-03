@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cinnova")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5979c61decdb04e0d95fa6b13e1ecfd759498990")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7c1058dc32ad5b2c154e3715174da8542db70ddc")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cinnova")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cinnova")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

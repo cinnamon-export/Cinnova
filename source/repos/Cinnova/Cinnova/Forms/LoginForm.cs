@@ -111,6 +111,8 @@ namespace Cinnova.Forms
             MessageBox.Show($"Username: '{username}'\nPassword: '{password}'",
         "Debug", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+          
+
             string query = $@"SELECT * FROM Users 
                       WHERE Username = '{username}' 
                       AND Password = '{password}'";
@@ -127,13 +129,19 @@ namespace Cinnova.Forms
 
                 if (result.Rows.Count > 0)
                 {
-                    string dbrole = result.Rows[0]["Role"].ToString();
+                    string dbrole = Convert.ToString(result.Rows[0]["Role"]);
                     MessageBox.Show($"Login OK! Role: {dbrole}", "Success",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    //DashboardForm dashboard = new DashboardForm(username, dbrole);
-                    // dashboard.Show();
-                    //this.Hide();
+                   
+
+                    // This creates and opens your User Management screen
+                    UserManagementForm adminForm = new UserManagementForm();
+                    adminForm.Show();
+
+                    // This hides the login screen
+                    this.Hide();
+                
                 }
                 else
                 {

@@ -236,7 +236,7 @@
             Controls.Add(lbltitle);
             Controls.Add(lblleaf);
             DoubleBuffered = true;
-            Icon = (Icon)resources.GetObject("$this.Icon");
+           // Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cinnova-Login";

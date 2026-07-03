@@ -110,3 +110,5 @@ C:\Users\nethu\Cinnova\source\repos\Cinnova\Cinnova\obj\Debug\net10.0-windows\Ci
 C:\Users\nethu\Cinnova\source\repos\Cinnova\Cinnova\obj\Debug\net10.0-windows\ref\Cinnova.dll
 C:\Users\nethu\Cinnova\source\repos\Cinnova\Cinnova\obj\Debug\net10.0-windows\Cinnova.Program.resources
 C:\Users\nethu\Cinnova\source\repos\Cinnova\Cinnova\bin\Debug\net10.0-windows\BCrypt-Net-Next.dll
+C:\Users\nethu\Cinnova\source\repos\Cinnova\Cinnova\obj\Debug\net10.0-windows\Cinnova.Properties.Resources.resources
+C:\Users\nethu\Cinnova\source\repos\Cinnova\Cinnova\obj\Debug\net10.0-windows\Cinnova.Forms.LoginForm.resources
