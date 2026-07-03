@@ -9,6 +9,46 @@ namespace Cinnova.Services
 {
     public class UserService
     {
+
+        public List<User> SearchUsers(string searchTerm)
+        {
+            List<User> filteredUsers = new List<User>();
+
+            using (Microsoft.Data.SqlClient.SqlConnection conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+
+                // The LIKE keyword combined with % wildcards allows us to find partial matches
+                string query = "SELECT UserID, FullName, Username, Role FROM Users WHERE FullName LIKE @Search OR Username LIKE @Search";
+
+                using (Microsoft.Data.SqlClient.SqlCommand cmd = new Microsoft.Data.SqlClient.SqlCommand(query, conn))
+                {
+                    // Adding "%" before and after means "find this text anywhere inside the column"
+                    cmd.Parameters.AddWithValue("@Search", "%" + searchTerm + "%");
+
+                    using (Microsoft.Data.SqlClient.SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            User user = new User
+                            {
+                                UserID = Convert.ToInt32(reader["UserID"]),
+                                FullName = reader["FullName"].ToString() ?? string.Empty,
+                                Username = reader["Username"].ToString() ?? string.Empty,
+
+                                // We intentionally leave Password blank here. We don't want to display hashes in the search grid!
+                                Password = string.Empty,
+
+                                Role = reader["Role"].ToString() ?? string.Empty
+                            };
+                            filteredUsers.Add(user);
+                        }
+                    }
+                }
+            }
+
+            return filteredUsers;
+        }
         public bool AddUser(User newUser)
         {
             try
@@ -17,19 +57,32 @@ namespace Cinnova.Services
                 using (SqlConnection conn = DatabaseHelper.GetConnection())
                 {
                     // 2. Write the SQL query to insert data
-                    string query = "INSERT INTO Users (FullName, Username, Password, Role) VALUES (@FullName, @Username, @Password, @Role)";
+                    // 1. Updated SQL query to include EmployeeID
+                    string query = "INSERT INTO Users (FullName, Username, Password, Role, EmployeeID) VALUES (@FullName, @Username, @Password, @Role, @EmployeeID)";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        // 3. Bind the C# variables to the SQL parameters
+                        // Existing parameters
                         cmd.Parameters.AddWithValue("@FullName", newUser.FullName);
                         cmd.Parameters.AddWithValue("@Username", newUser.Username);
                         cmd.Parameters.AddWithValue("@Password", newUser.Password);
                         cmd.Parameters.AddWithValue("@Role", newUser.Role);
 
+                        // 2. The New Bridge: Safely add the EmployeeID
+                        if (newUser.EmployeeID.HasValue)
+                        {
+                            cmd.Parameters.AddWithValue("@EmployeeID", newUser.EmployeeID.Value);
+                        }
+                        else
+                        {
+                            // DBNull.Value tells SQL Server to safely leave this field blank if no employee is selected
+                            cmd.Parameters.AddWithValue("@EmployeeID", DBNull.Value);
+                        }
+
                         // 4. Execute the command
                         conn.Open();
                         int rowsAffected = cmd.ExecuteNonQuery();
+                        
 
                         // If rowsAffected is greater than 0, the user was saved successfully
                         return rowsAffected > 0;
@@ -44,6 +97,39 @@ namespace Cinnova.Services
             }
         }
 
+
+        public bool AuthenticateUser(string username, string typedPassword)
+        {
+            using (Microsoft.Data.SqlClient.SqlConnection conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+
+                // We only want to look up the secure hash for the specific username
+                string query = "SELECT Password FROM Users WHERE Username = @Username";
+
+                using (Microsoft.Data.SqlClient.SqlCommand cmd = new Microsoft.Data.SqlClient.SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Username", username);
+
+                    // ExecuteScalar is perfect here because we only want ONE specific piece of data (the hash)
+                    object result = cmd.ExecuteScalar();
+
+                    // If result is NOT null, it means the username exists in the database
+                    if (result != null)
+                    {
+                        string storedHash = result?.ToString() ?? string.Empty;
+
+                        // The Magic Step: BCrypt safely compares the typed password against the scrambled hash
+                        bool isPasswordCorrect = BCrypt.Net.BCrypt.Verify(typedPassword, storedHash);
+
+                        return isPasswordCorrect; // Will return true if they match, false if they don't
+                    }
+                }
+            }
+
+            // If we get here, it means the username didn't exist at all
+            return false;
+        }
         public List<User> GetAllUsers()
         {
             List<User> userList = new List<User>();

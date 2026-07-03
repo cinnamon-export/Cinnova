@@ -40,13 +40,16 @@
             dgvUsers = new DataGridView();
             btnDelete = new Button();
             btnUpdate = new Button();
+            btnTestLogin = new Button();
+            txtSearch = new TextBox();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
             SuspendLayout();
             // 
             // txtFullName
             // 
             txtFullName.Font = new Font("Segoe UI", 10F);
-            txtFullName.Location = new Point(293, 35);
+            txtFullName.Location = new Point(293, 99);
             txtFullName.Name = "txtFullName";
             txtFullName.Size = new Size(176, 30);
             txtFullName.TabIndex = 0;
@@ -55,7 +58,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F);
-            label1.Location = new Point(140, 42);
+            label1.Location = new Point(140, 106);
             label1.Name = "label1";
             label1.Size = new Size(87, 23);
             label1.TabIndex = 1;
@@ -65,7 +68,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F);
-            label2.Location = new Point(140, 153);
+            label2.Location = new Point(140, 188);
             label2.Name = "label2";
             label2.Size = new Size(95, 23);
             label2.TabIndex = 2;
@@ -76,7 +79,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F);
-            label3.Location = new Point(140, 210);
+            label3.Location = new Point(140, 231);
             label3.Name = "label3";
             label3.Size = new Size(80, 23);
             label3.TabIndex = 3;
@@ -86,7 +89,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10F);
-            label4.Location = new Point(140, 98);
+            label4.Location = new Point(140, 148);
             label4.Name = "label4";
             label4.Size = new Size(97, 23);
             label4.TabIndex = 4;
@@ -94,14 +97,14 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(293, 206);
+            txtPassword.Location = new Point(293, 231);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(176, 27);
             txtPassword.TabIndex = 5;
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(293, 149);
+            txtUsername.Location = new Point(293, 184);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(176, 27);
             txtUsername.TabIndex = 6;
@@ -110,7 +113,7 @@
             // 
             cmbRole.FormattingEnabled = true;
             cmbRole.Items.AddRange(new object[] { "Owner", "Manager", "Staff" });
-            cmbRole.Location = new Point(293, 93);
+            cmbRole.Location = new Point(293, 143);
             cmbRole.Name = "cmbRole";
             cmbRole.Size = new Size(176, 28);
             cmbRole.TabIndex = 7;
@@ -119,7 +122,7 @@
             // btnAddUser
             // 
             btnAddUser.Font = new Font("Segoe UI", 10F);
-            btnAddUser.Location = new Point(224, 284);
+            btnAddUser.Location = new Point(224, 292);
             btnAddUser.Name = "btnAddUser";
             btnAddUser.Size = new Size(94, 38);
             btnAddUser.TabIndex = 8;
@@ -141,7 +144,7 @@
             // btnDelete
             // 
             btnDelete.Font = new Font("Segoe UI", 10F);
-            btnDelete.Location = new Point(224, 337);
+            btnDelete.Location = new Point(224, 347);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(94, 32);
             btnDelete.TabIndex = 10;
@@ -152,7 +155,7 @@
             // btnUpdate
             // 
             btnUpdate.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnUpdate.Location = new Point(224, 386);
+            btnUpdate.Location = new Point(224, 399);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(94, 32);
             btnUpdate.TabIndex = 11;
@@ -160,11 +163,42 @@
             btnUpdate.UseVisualStyleBackColor = true;
             btnUpdate.Click += btnUpdate_Click;
             // 
+            // btnTestLogin
+            // 
+            btnTestLogin.Location = new Point(69, 337);
+            btnTestLogin.Name = "btnTestLogin";
+            btnTestLogin.Size = new Size(94, 29);
+            btnTestLogin.TabIndex = 12;
+            btnTestLogin.Text = "Test login engine";
+            btnTestLogin.UseVisualStyleBackColor = true;
+            btnTestLogin.Click += btnTestLogin_Click;
+            // 
+            // txtSearch
+            // 
+            txtSearch.Location = new Point(224, 12);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(146, 27);
+            txtSearch.TabIndex = 13;
+            txtSearch.TextChanged += txtSearch_TextChanged;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 10F);
+            label5.Location = new Point(97, 13);
+            label5.Name = "label5";
+            label5.Size = new Size(107, 23);
+            label5.TabIndex = 14;
+            label5.Text = "Search Users";
+            // 
             // UserManagementForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(813, 472);
+            ClientSize = new Size(819, 472);
+            Controls.Add(label5);
+            Controls.Add(txtSearch);
+            Controls.Add(btnTestLogin);
             Controls.Add(btnUpdate);
             Controls.Add(btnDelete);
             Controls.Add(dgvUsers);
@@ -198,5 +232,8 @@
         private DataGridView dgvUsers;
         private Button btnDelete;
         private Button btnUpdate;
+        private Button btnTestLogin;
+        private TextBox txtSearch;
+        private Label label5;
     }
 }

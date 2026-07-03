@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cinnova.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,7 +34,7 @@ namespace Cinnova.Forms
                 Cinnova.Models.User newUser = new Cinnova.Models.User();
                 newUser.FullName = txtFullName.Text;
                 newUser.Username = txtUsername.Text;
-                newUser.Password = txtPassword.Text;
+                newUser.Password = BCrypt.Net.BCrypt.HashPassword(txtPassword.Text);
                 newUser.Role = cmbRole.Text;
 
                 // 2. Send it to the database using our Service
@@ -112,7 +113,7 @@ namespace Cinnova.Forms
                 // Copy the data from the selected row into the text boxes
                 txtFullName.Text = dgvUsers.CurrentRow.Cells["FullName"].Value?.ToString() ?? string.Empty;
                 txtUsername.Text = dgvUsers.CurrentRow.Cells["Username"].Value?.ToString() ?? string.Empty;
-                txtPassword.Text = dgvUsers.CurrentRow.Cells["Password"].Value?.ToString() ?? string.Empty;
+                txtPassword.Clear();
                 cmbRole.Text = dgvUsers.CurrentRow.Cells["Role"].Value?.ToString() ?? string.Empty;
 
             }
@@ -146,7 +147,7 @@ namespace Cinnova.Forms
                 updatedUser.UserID = selectedUserId;
                 updatedUser.FullName = txtFullName.Text;
                 updatedUser.Username = txtUsername.Text;
-                updatedUser.Password = txtPassword.Text;
+                updatedUser.Password = BCrypt.Net.BCrypt.HashPassword(txtPassword.Text);
                 updatedUser.Role = cmbRole.Text;
 
                 // 3. Send it to the database
@@ -167,6 +168,52 @@ namespace Cinnova.Forms
             {
                 MessageBox.Show("Please select a user to update.");
             }
+        }
+
+        private void btnTestLogin_Click(object sender, EventArgs e)
+        {
+
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text;
+
+            // 1. Basic validation to make sure fields aren't empty
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Please enter both a username and password to test.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // 2. Instantiate your service layer
+                UserService userService = new UserService();
+
+                // 3. Call your new BCrypt authentication engine
+                bool isLoginSuccessful = userService.AuthenticateUser(username, password);
+
+                // 4. Show the result
+                if (isLoginSuccessful)
+                {
+                    MessageBox.Show("Login Successful! BCrypt successfully verified the password matching the database hash.", "Authentication Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Login Failed! Incorrect username or password. BCrypt rejected the match.", "Authentication Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred during testing: {ex.Message}", "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            // 1. Instantiate your service
+            UserService userService = new UserService();
+
+            // 2. Feed whatever is typed into the search box directly to your backend engine
+            dgvUsers.DataSource = userService.SearchUsers(txtSearch.Text);
         }
     }
 }
