@@ -60,9 +60,9 @@ namespace Cinnova.Forms
 
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
+        private void LoginForm_Load(object? sender, EventArgs e)
         {
-            
+
 
 
 
@@ -111,7 +111,7 @@ namespace Cinnova.Forms
             MessageBox.Show($"Username: '{username}'\nPassword: '{password}'",
         "Debug", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-          
+
 
             string query = $@"SELECT * FROM Users 
                       WHERE Username = '{username}' 
@@ -119,55 +119,63 @@ namespace Cinnova.Forms
 
 
 
-
             try
             {
                 var result = DatabaseHelper.ExecuteQuery(query);
 
-                MessageBox.Show($"Rows found: {result.Rows.Count}",
-                    "Debug", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 if (result.Rows.Count > 0)
                 {
-                    string dbrole = Convert.ToString(result.Rows[0]["Role"]);
-                    MessageBox.Show($"Login OK! Role: {dbrole}", "Success",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string? dbrole = Convert.ToString(result.Rows[0]["Role"]);
 
-                   
+                    // Check for valid roles
+                    if (dbrole == "Owner" || dbrole == "Manager" || dbrole == "Staff")
+                    {
+                        MessageBox.Show($"Login OK! Welcome {dbrole}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // This creates and opens your User Management screen
-                    UserManagementForm adminForm = new UserManagementForm();
-                    adminForm.Show();
-
-                    // This hides the login screen
-                    this.Hide();
-                
+                        UserManagementForm adminForm = new UserManagementForm();
+                        adminForm.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Access Denied. Role '{dbrole}' is not authorized to access this system.",
+                                        "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtpassword.Clear();
+                        txtpassword.Focus();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Invalid username or password.Please try again.,",
-                        "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Invalid username or password. Please try again.",
+                                    "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtpassword.Clear();
                     txtpassword.Focus();
                 }
-            }
+            } // <--- This closes the 'try' block
             catch (Exception ex)
             {
-                MessageBox.Show($"Database error:{ex.Message}",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                MessageBox.Show($"Database error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } // <--- This closes the 'catch' block
+
         }
+
+
+
+
 
         private void panelcard_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void LoginForm_Resize(object sender, EventArgs e)
+        private void LoginForm_Resize(object? sender, EventArgs e)
         {
-            
+
         }
-        
-        
     }
+
+
+        
+        
+    
 }

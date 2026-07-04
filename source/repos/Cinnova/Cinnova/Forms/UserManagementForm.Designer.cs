@@ -137,7 +137,7 @@
             dgvUsers.Name = "dgvUsers";
             dgvUsers.RowHeadersWidth = 51;
             dgvUsers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvUsers.Size = new Size(301, 419);
+            dgvUsers.Size = new Size(537, 419);
             dgvUsers.TabIndex = 9;
             dgvUsers.CellClick += dgvUsers_CellClick;
             // 
@@ -195,7 +195,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(819, 472);
+            ClientSize = new Size(1060, 472);
             Controls.Add(label5);
             Controls.Add(txtSearch);
             Controls.Add(btnTestLogin);
