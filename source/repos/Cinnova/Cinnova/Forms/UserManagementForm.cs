@@ -8,10 +8,11 @@ using System.Text;
 using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using MaterialSkin.Controls;
 
 namespace Cinnova.Forms
 {
-    public partial class UserManagementForm : Form
+    public partial class UserManagementForm : MaterialForm
     {
         public UserManagementForm()
         {
@@ -19,6 +20,10 @@ namespace Cinnova.Forms
             //1.This guarantees the data loads before the window even opens!
             Cinnova.Services.UserService userService = new Cinnova.Services.UserService();
             dgvUsers.DataSource = userService.GetAllUsers();
+
+            
+
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -32,10 +37,10 @@ namespace Cinnova.Forms
             {
                 // 1. Package the typed data into our User model
                 Cinnova.Models.User newUser = new Cinnova.Models.User();
-                newUser.FullName = txtFullName.Text;
+                newUser.EmployeeName = txtFullName.Text;
                 newUser.Username = txtUsername.Text;
                 newUser.Password = BCrypt.Net.BCrypt.HashPassword(txtPassword.Text);
-                newUser.Role = cmbRole.Text;
+                newUser.JobRole = cmbRole.Text;
 
                 // 2. Send it to the database using our Service
                 Cinnova.Services.UserService userService = new Cinnova.Services.UserService();
@@ -50,15 +55,11 @@ namespace Cinnova.Forms
                     dgvUsers.DataSource = userService.GetAllUsers();
 
                     // Clean up the UI by emptying the text boxes for the next entry
-                    txtFullName.Clear();
+                    txtFullName.SelectedIndex = -1;
                     txtUsername.Clear();
                     txtPassword.Clear();
                     cmbRole.SelectedIndex = -1;
-                    // Clear the boxes so they are empty for the next entry
-                    txtFullName.Clear();
-                    txtUsername.Clear();
-                    txtPassword.Clear();
-                    cmbRole.SelectedIndex = -1;
+
                 }
                 else
                 {
@@ -111,10 +112,10 @@ namespace Cinnova.Forms
             if (e.RowIndex >= 0 && dgvUsers.CurrentRow != null)
             {
                 // Copy the data from the selected row into the text boxes
-                txtFullName.Text = dgvUsers.CurrentRow.Cells["FullName"].Value?.ToString() ?? string.Empty;
+                txtFullName.Text = dgvUsers.CurrentRow.Cells["EmployeeName"].Value?.ToString() ?? string.Empty;
                 txtUsername.Text = dgvUsers.CurrentRow.Cells["Username"].Value?.ToString() ?? string.Empty;
                 txtPassword.Clear();
-                cmbRole.Text = dgvUsers.CurrentRow.Cells["Role"].Value?.ToString() ?? string.Empty;
+                cmbRole.Text = dgvUsers.CurrentRow.Cells["JobRole"].Value?.ToString() ?? string.Empty;
 
             }
         }
@@ -145,10 +146,10 @@ namespace Cinnova.Forms
                 // 2. Package the modified details from the text boxes
                 Cinnova.Models.User updatedUser = new Cinnova.Models.User();
                 updatedUser.UserID = selectedUserId;
-                updatedUser.FullName = txtFullName.Text;
+                updatedUser.EmployeeName = txtFullName.Text;
                 updatedUser.Username = txtUsername.Text;
                 updatedUser.Password = BCrypt.Net.BCrypt.HashPassword(txtPassword.Text);
-                updatedUser.Role = cmbRole.Text;
+                updatedUser.JobRole = cmbRole.Text;
 
                 // 3. Send it to the database
                 Cinnova.Services.UserService userService = new Cinnova.Services.UserService();
@@ -158,7 +159,7 @@ namespace Cinnova.Forms
 
                     // 4. Refresh the grid and clear the boxes
                     dgvUsers.DataSource = userService.GetAllUsers();
-                    txtFullName.Clear();
+                    txtFullName.SelectedIndex = -1;
                     txtUsername.Clear();
                     txtPassword.Clear();
                     cmbRole.SelectedIndex = -1;
@@ -207,13 +208,48 @@ namespace Cinnova.Forms
             }
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
+        private void txtSearch_TextChanged(object? sender, EventArgs e)
         {
+
+            
             // 1. Instantiate your service
             UserService userService = new UserService();
 
             // 2. Feed whatever is typed into the search box directly to your backend engine
             dgvUsers.DataSource = userService.SearchUsers(txtSearch.Text);
+
+
+
+            
+        }
+        
+
+        private void UserManagementForm_Load(object sender, EventArgs e)
+        {
+            // Force the search box to listen to your text changed method
+            txtSearch.TextChanged += txtSearch_TextChanged;
+
+
+        }
+
+        private void materialButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sidebarControl1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSearch_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

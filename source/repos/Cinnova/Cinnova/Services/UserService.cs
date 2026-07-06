@@ -19,7 +19,7 @@ namespace Cinnova.Services
                 conn.Open();
 
                 // The LIKE keyword combined with % wildcards allows us to find partial matches
-                string query = "SELECT UserID, FullName, Username, Role FROM Users WHERE FullName LIKE @Search OR Username LIKE @Search";
+                string query = "SELECT UserID, EmployeeID, EmployeeName, Username, Password, JobRole FROM Users WHERE EmployeeName LIKE @search OR Username LIKE @search";
 
                 using (Microsoft.Data.SqlClient.SqlCommand cmd = new Microsoft.Data.SqlClient.SqlCommand(query, conn))
                 {
@@ -33,13 +33,13 @@ namespace Cinnova.Services
                             User user = new User
                             {
                                 UserID = Convert.ToInt32(reader["UserID"]),
-                                FullName = reader["FullName"].ToString() ?? string.Empty,
+                                EmployeeName = reader["EmployeeName"].ToString() ?? string.Empty,
                                 Username = reader["Username"].ToString() ?? string.Empty,
 
                                 // We intentionally leave Password blank here. We don't want to display hashes in the search grid!
                                 Password = string.Empty,
 
-                                Role = reader["Role"].ToString() ?? string.Empty
+                                JobRole = reader["JobRole"].ToString() ?? string.Empty
                             };
                             filteredUsers.Add(user);
                         }
@@ -58,15 +58,16 @@ namespace Cinnova.Services
                 {
                     // 2. Write the SQL query to insert data
                     // 1. Updated SQL query to include EmployeeID
-                    string query = "INSERT INTO Users (FullName, Username, Password, Role, EmployeeID) VALUES (@FullName, @Username, @Password, @Role, @EmployeeID)";
+                    string query = "INSERT INTO Users (EmployeeID, EmployeeName, Username, Password, JobRole) VALUES (@EmployeeID, @EmployeeName, @Username, @Password, @JobRole)";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         // Existing parameters
-                        cmd.Parameters.AddWithValue("@FullName", newUser.FullName);
+                        cmd.Parameters.AddWithValue("@EmployeeName", newUser.EmployeeName);
                         cmd.Parameters.AddWithValue("@Username", newUser.Username);
                         cmd.Parameters.AddWithValue("@Password", newUser.Password);
-                        cmd.Parameters.AddWithValue("@Role", newUser.Role);
+                        cmd.Parameters.AddWithValue("@JobRole", newUser.JobRole);
+                        
 
                         // 2. The New Bridge: Safely add the EmployeeID
                         if (newUser.EmployeeID.HasValue)
@@ -137,7 +138,7 @@ namespace Cinnova.Services
             {
                 using (SqlConnection conn = DatabaseHelper.GetConnection())
                 {
-                    string query = "SELECT UserID, FullName, Username, Password, Role FROM Users";
+                    string query = "SELECT UserID, EmployeeName, Username, Password, JobRole FROM Users";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         conn.Open();
@@ -148,10 +149,10 @@ namespace Cinnova.Services
                             {
                                 User u = new User();
                                 u.UserID = Convert.ToInt32(reader["UserID"]);
-                                u.FullName = reader["FullName"]?.ToString() ?? string.Empty;
+                                u.EmployeeName = reader["EmployeeName"]?.ToString() ?? string.Empty;
                                 u.Username = reader["Username"]?.ToString() ?? string.Empty;
                                 u.Password = reader["Password"]?.ToString() ?? string.Empty;
-                                u.Role = reader["Role"]?.ToString() ?? string.Empty;
+                                u.JobRole = reader["JobRole"]?.ToString() ?? string.Empty;
                                 // Add this user to our list
                                 userList.Add(u);
                             }
@@ -187,14 +188,13 @@ namespace Cinnova.Services
             // Look here: No more "System.Data.SqlClient." forcing!
             using (SqlConnection conn = DatabaseHelper.GetConnection())
             {
-                string query = "UPDATE Users SET FullName = @FullName, Username = @Username, Password = @Password, Role = @Role WHERE UserID = @UserID";
+                string query = "UPDATE Users SET Username = @Username, Password = @Password WHERE UserID = @UserID";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@FullName", user.FullName);
+                    
                     cmd.Parameters.AddWithValue("@Username", user.Username);
                     cmd.Parameters.AddWithValue("@Password", user.Password);
-                    cmd.Parameters.AddWithValue("@Role", user.Role);
                     cmd.Parameters.AddWithValue("@UserID", user.UserID);
 
                     conn.Open();
