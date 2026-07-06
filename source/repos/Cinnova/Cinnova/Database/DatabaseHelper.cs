@@ -2,13 +2,14 @@
 using System.Windows.Forms;
 using System.Data;
 using Microsoft.Data.SqlClient;
+using Cinnova.Database;
 
 namespace Cinnova.Database
 {
     public class DatabaseHelper
     {
         private static string connectionString =
-            "Server=Kemeesha\\SQLEXPRESS01;Database=CinnovaDB; Integrated Security=True;Encrypt=False";
+             "Server=localhost;Database=CinnovaDB;Integrated Security=True;TrustServerCertificate=True;";
 
         public static SqlConnection GetConnection()
         {

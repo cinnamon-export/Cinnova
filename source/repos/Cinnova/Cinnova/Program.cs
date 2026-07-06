@@ -1,13 +1,12 @@
-using System.Windows.Forms;
 using Cinnova.Database;
 using Cinnova.Forms;
+using System;
+using System.Windows.Forms;
+
 namespace Cinnova
 {
-    public partial class LoginForm : Form
+    internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
@@ -17,10 +16,8 @@ namespace Cinnova
                 MessageBox.Show("Database Connected Successfully!");
             else
                 MessageBox.Show("Database Connection Failed!");
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new LoginForm());
+
+            Application.Run(new Cinnova.Forms.FarmerForm());
         }
     }
 }
