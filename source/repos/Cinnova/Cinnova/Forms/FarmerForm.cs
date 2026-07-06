@@ -103,7 +103,7 @@ namespace Cinnova.Forms
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 
-                    cmd.Parameters.AddWithValue("@farmerID", 1);
+                    cmd.Parameters.AddWithValue("@farmerID", Convert.ToInt32(combofarmer.SelectedValue));
                     cmd.Parameters.AddWithValue("@qty", Convert.ToDecimal(txtQuantityKg.Text));
                     cmd.Parameters.AddWithValue("@price", Convert.ToDecimal(txtPriceKg.Text));
                     cmd.Parameters.AddWithValue("@total", Convert.ToDecimal(txtCost.Text));
@@ -225,6 +225,16 @@ FROM Farmers";
 
                 da.Fill(dt);
                 dgvFarmers.DataSource = dt;
+                
+
+                
+                dgvFarmers.ClearSelection();
+                dgvFarmers.CurrentCell = null;
+
+                foreach (DataGridViewRow row in dgvFarmers.Rows)
+                {
+                    row.Selected = false;
+                }
                 dgvFarmers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 dgvFarmers.ScrollBars = ScrollBars.Both;
 
@@ -269,6 +279,12 @@ FROM Farmers";
                 combofarmer.DataSource = dt;
                 combofarmer.DisplayMember = "FullName";
                 combofarmer.ValueMember = "FarmerID";
+                dgvFarmers.ClearSelection();
+                dgvFarmers.CurrentCell = null;
+                foreach (DataGridViewRow row in dgvFarmers.Rows)
+                {
+                    row.Selected = false;
+                }
             }
         }
 
@@ -288,10 +304,22 @@ FROM Farmers";
                 da.Fill(dt);
 
                 dgvPurchases.DataSource = dt;
+                dgvPurchases.ClearSelection();
+                dgvPurchases.CurrentCell = null;
+
+                dgvPurchases.DefaultCellStyle.SelectionBackColor = Color.FromArgb(245, 235, 225);
+                dgvPurchases.DefaultCellStyle.SelectionForeColor = Color.Black;
                 UpdatePurchaseCount();
+                dgvPurchases.ClearSelection();
+                dgvPurchases.CurrentCell = null;
+                foreach (DataGridViewRow row in dgvPurchases.Rows)
+                {
+                    row.Selected = false;
+                }
 
             }
         }
+       
 
         private void tabPage1_Click(object sender, EventArgs e)
         {
@@ -347,8 +375,17 @@ FROM Farmers";
         }
         private void UpdatePurchaseCount()
         {
-            lblTotalPurchases.Text =
-                dgvPurchases.Rows.Count.ToString();
+            using (SqlConnection conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+
+                string query = "SELECT COUNT(*) FROM Purchases";
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                label13.Text = count.ToString();
+            }
         }
 
         private void btnLogoutFarmer_Click(object sender, EventArgs e)
@@ -514,7 +551,35 @@ FROM Farmers";
 
         private void Delete_Click(object sender, EventArgs e)
         {
+            if (dgvPurchases.CurrentRow == null)
+            {
+                MessageBox.Show("Please select a purchase to delete.");
+                return;
+            }
 
+            int purchaseId = Convert.ToInt32(dgvPurchases.CurrentRow.Cells["PurchaseID"].Value);
+
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to delete this purchase?",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                using (SqlConnection conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+                    string query = "DELETE FROM Purchases WHERE PurchaseID = @PurchaseID";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@PurchaseID", purchaseId);
+                    cmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Purchase deleted successfully.");
+                LoadPurchases();
+                UpdatePurchaseCount();
+            }
         }
 
         private void label11_Click(object sender, EventArgs e)
@@ -550,7 +615,10 @@ FROM Farmers";
         private void label13_Click(object sender, EventArgs e)
         {
 
+
         }
+
+        
 
         private void FarmerForm_Load(object sender, EventArgs e)
         {
@@ -566,6 +634,18 @@ FROM Farmers";
         {
             Bitmap bmp = new Bitmap(dgvFarmers.Width, dgvFarmers.Height);
             dgvFarmers.DrawToBitmap(bmp, new Rectangle(0, 0, dgvFarmers.Width, dgvFarmers.Height));
+            e.Graphics.DrawImage(bmp, 50, 100);
+        }
+
+        private void btnPrintPurchase_Click(object sender, EventArgs e)
+        {
+            printDocumentPurchases.Print();
+        }
+
+        private void printDocumentPurchases_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Bitmap bmp = new Bitmap(dgvPurchases.Width, dgvPurchases.Height);
+            dgvPurchases.DrawToBitmap(bmp, new Rectangle(0, 0, dgvPurchases.Width, dgvPurchases.Height));
             e.Graphics.DrawImage(bmp, 50, 100);
         }
     }

@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             tabPage2 = new TabPage();
+            pnlPurchasePrint = new Panel();
+            btnPrintPurchase = new Button();
+            picPurchasePrint = new PictureBox();
             panel5 = new Panel();
             label13 = new Label();
             label2 = new Label();
@@ -70,6 +73,7 @@
             label4 = new Label();
             tabPage1 = new TabPage();
             panel3 = new Panel();
+            picPrint = new PictureBox();
             btnPrintFarmers = new Button();
             panel2 = new Panel();
             label9 = new Label();
@@ -83,8 +87,10 @@
             tabControl1 = new TabControl();
             sidebarControl1 = new SidebarControl();
             printDocumentFarmers = new System.Drawing.Printing.PrintDocument();
-            picPrint = new PictureBox();
+            printDocumentPurchases = new System.Drawing.Printing.PrintDocument();
             tabPage2.SuspendLayout();
+            pnlPurchasePrint.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picPurchasePrint).BeginInit();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
             pnlTotalPurchases.SuspendLayout();
@@ -94,16 +100,17 @@
             ((System.ComponentModel.ISupportInitialize)dgvFarmers).BeginInit();
             tabPage1.SuspendLayout();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picPrint).BeginInit();
             panel2.SuspendLayout();
             pnlBanner.SuspendLayout();
             pnlTotalFarmers.SuspendLayout();
             tabControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)picPrint).BeginInit();
             SuspendLayout();
             // 
             // tabPage2
             // 
             tabPage2.BackColor = Color.FromArgb(255, 247, 237);
+            tabPage2.Controls.Add(pnlPurchasePrint);
             tabPage2.Controls.Add(panel5);
             tabPage2.Controls.Add(label11);
             tabPage2.Controls.Add(panel4);
@@ -116,6 +123,39 @@
             tabPage2.Size = new Size(692, 552);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Purchases";
+            // 
+            // pnlPurchasePrint
+            // 
+            pnlPurchasePrint.BackColor = Color.White;
+            pnlPurchasePrint.Controls.Add(btnPrintPurchase);
+            pnlPurchasePrint.Controls.Add(picPurchasePrint);
+            pnlPurchasePrint.Location = new Point(265, 135);
+            pnlPurchasePrint.Name = "pnlPurchasePrint";
+            pnlPurchasePrint.Size = new Size(185, 35);
+            pnlPurchasePrint.TabIndex = 22;
+            // 
+            // btnPrintPurchase
+            // 
+            btnPrintPurchase.BackColor = Color.FromArgb(78, 36, 16);
+            btnPrintPurchase.FlatStyle = FlatStyle.Flat;
+            btnPrintPurchase.ForeColor = Color.White;
+            btnPrintPurchase.Location = new Point(63, 5);
+            btnPrintPurchase.Name = "btnPrintPurchase";
+            btnPrintPurchase.Size = new Size(75, 23);
+            btnPrintPurchase.TabIndex = 1;
+            btnPrintPurchase.Text = "Print";
+            btnPrintPurchase.UseVisualStyleBackColor = false;
+            btnPrintPurchase.Click += btnPrintPurchase_Click;
+            // 
+            // picPurchasePrint
+            // 
+            picPurchasePrint.Image = Properties.Resources.photo_2026_07_05_20_52_40__2_2;
+            picPurchasePrint.Location = new Point(21, 8);
+            picPurchasePrint.Name = "picPurchasePrint";
+            picPurchasePrint.Size = new Size(20, 20);
+            picPurchasePrint.SizeMode = PictureBoxSizeMode.Zoom;
+            picPurchasePrint.TabIndex = 0;
+            picPurchasePrint.TabStop = false;
             // 
             // panel5
             // 
@@ -232,12 +272,12 @@
             dgvPurchases.BackgroundColor = Color.White;
             dgvPurchases.BorderStyle = BorderStyle.None;
             dgvPurchases.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPurchases.Location = new Point(265, 137);
+            dgvPurchases.Location = new Point(265, 173);
             dgvPurchases.Name = "dgvPurchases";
             dgvPurchases.ReadOnly = true;
             dgvPurchases.RowHeadersVisible = false;
             dgvPurchases.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPurchases.Size = new Size(403, 368);
+            dgvPurchases.Size = new Size(403, 332);
             dgvPurchases.TabIndex = 13;
             dgvPurchases.CellContentClick += dgvPurchases_CellContentClick;
             // 
@@ -570,6 +610,17 @@
             panel3.Size = new Size(144, 52);
             panel3.TabIndex = 30;
             // 
+            // picPrint
+            // 
+            picPrint.BackColor = Color.White;
+            picPrint.Image = Properties.Resources.photo_2026_07_05_20_52_40__2_;
+            picPrint.Location = new Point(12, 17);
+            picPrint.Name = "picPrint";
+            picPrint.Size = new Size(20, 20);
+            picPrint.SizeMode = PictureBoxSizeMode.Zoom;
+            picPrint.TabIndex = 31;
+            picPrint.TabStop = false;
+            // 
             // btnPrintFarmers
             // 
             btnPrintFarmers.BackColor = Color.FromArgb(78, 36, 16);
@@ -705,16 +756,9 @@
             // 
             printDocumentFarmers.PrintPage += printDocumentFarmers_PrintPage;
             // 
-            // picPrint
+            // printDocumentPurchases
             // 
-            picPrint.BackColor = Color.White;
-            picPrint.Image = Properties.Resources.photo_2026_07_05_20_52_40__2_;
-            picPrint.Location = new Point(12, 17);
-            picPrint.Name = "picPrint";
-            picPrint.Size = new Size(20, 20);
-            picPrint.SizeMode = PictureBoxSizeMode.Zoom;
-            picPrint.TabIndex = 31;
-            picPrint.TabStop = false;
+            printDocumentPurchases.PrintPage += printDocumentPurchases_PrintPage;
             // 
             // FarmerForm
             // 
@@ -724,12 +768,15 @@
             ClientSize = new Size(884, 541);
             Controls.Add(sidebarControl1);
             Controls.Add(tabControl1);
+            MaximizeBox = false;
             Name = "FarmerForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Farmer Management";
             Load += FarmerForm_Load;
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
+            pnlPurchasePrint.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)picPurchasePrint).EndInit();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             panel4.ResumeLayout(false);
@@ -745,13 +792,13 @@
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)picPrint).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             pnlBanner.ResumeLayout(false);
             pnlTotalFarmers.ResumeLayout(false);
             pnlTotalFarmers.PerformLayout();
             tabControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)picPrint).EndInit();
             ResumeLayout(false);
         }
 
@@ -813,5 +860,9 @@
         private System.Drawing.Printing.PrintDocument printDocumentFarmers;
         private Panel panel3;
         private PictureBox picPrint;
+        private Panel pnlPurchasePrint;
+        private PictureBox picPurchasePrint;
+        private Button btnPrintPurchase;
+        private System.Drawing.Printing.PrintDocument printDocumentPurchases;
     }
 }
