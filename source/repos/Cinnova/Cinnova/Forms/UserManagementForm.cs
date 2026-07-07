@@ -17,11 +17,11 @@ namespace Cinnova.Forms
         public UserManagementForm()
         {
             InitializeComponent();
-            //1.This guarantees the data loads before the window even opens!
+            //To load data even before windows open.
             Cinnova.Services.UserService userService = new Cinnova.Services.UserService();
             dgvUsers.DataSource = userService.GetAllUsers();
 
-            
+
 
 
         }
@@ -35,23 +35,23 @@ namespace Cinnova.Forms
         {
             if (ValidateInput() == true)
             {
-                // 1. Package the typed data into our User model
+                // Package the typed data into our User model
                 Cinnova.Models.User newUser = new Cinnova.Models.User();
                 newUser.EmployeeName = txtFullName.Text;
                 newUser.Username = txtUsername.Text;
                 newUser.Password = BCrypt.Net.BCrypt.HashPassword(txtPassword.Text);
                 newUser.JobRole = cmbRole.Text;
 
-                // 2. Send it to the database using our Service
+                // Send it to the database using our Service
                 Cinnova.Services.UserService userService = new Cinnova.Services.UserService();
                 bool isSuccess = userService.AddUser(newUser);
 
-                // 3. Tell the user if it worked!
+                // Tell the user if it worked
                 if (isSuccess)
                 {
                     MessageBox.Show("User registered successfully!");
 
-                    // Refresh the grid to show the new user immediately
+                    // Refresh data grid to show the new user immediately
                     dgvUsers.DataSource = userService.GetAllUsers();
 
                     // Clean up the UI by emptying the text boxes for the next entry
@@ -171,47 +171,12 @@ namespace Cinnova.Forms
             }
         }
 
-        private void btnTestLogin_Click(object sender, EventArgs e)
-        {
 
-            string username = txtUsername.Text.Trim();
-            string password = txtPassword.Text;
-
-            // 1. Basic validation to make sure fields aren't empty
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-            {
-                MessageBox.Show("Please enter both a username and password to test.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                // 2. Instantiate your service layer
-                UserService userService = new UserService();
-
-                // 3. Call your new BCrypt authentication engine
-                bool isLoginSuccessful = userService.AuthenticateUser(username, password);
-
-                // 4. Show the result
-                if (isLoginSuccessful)
-                {
-                    MessageBox.Show("Login Successful! BCrypt successfully verified the password matching the database hash.", "Authentication Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Login Failed! Incorrect username or password. BCrypt rejected the match.", "Authentication Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred during testing: {ex.Message}", "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void txtSearch_TextChanged(object? sender, EventArgs e)
         {
 
-            
+
             // 1. Instantiate your service
             UserService userService = new UserService();
 
@@ -220,9 +185,9 @@ namespace Cinnova.Forms
 
 
 
-            
+
         }
-        
+
 
         private void UserManagementForm_Load(object sender, EventArgs e)
         {
@@ -248,6 +213,11 @@ namespace Cinnova.Forms
         }
 
         private void txtSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbRole_SelectedIndexChanged_1(object sender, EventArgs e)
         {
 
         }

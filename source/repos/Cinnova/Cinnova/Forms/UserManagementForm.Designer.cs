@@ -2,15 +2,13 @@
 {
     partial class UserManagementForm
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
+        
+        // Required designer variable.
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        
+        // Clean up any resources being used.
+        //<param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -37,7 +35,6 @@
             dgvUsers = new DataGridView();
             btnDelete = new Button();
             btnUpdate = new Button();
-            btnTestLogin = new Button();
             label5 = new Label();
             sidebarControl1 = new SidebarControl();
             materialCard1 = new MaterialSkin.Controls.MaterialCard();
@@ -112,11 +109,11 @@
             // 
             dgvUsers.BackgroundColor = Color.White;
             dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsers.Location = new Point(17, 84);
+            dgvUsers.Location = new Point(17, 82);
             dgvUsers.Name = "dgvUsers";
             dgvUsers.RowHeadersWidth = 51;
             dgvUsers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvUsers.Size = new Size(617, 402);
+            dgvUsers.Size = new Size(617, 404);
             dgvUsers.TabIndex = 9;
             dgvUsers.CellClick += dgvUsers_CellClick;
             // 
@@ -146,16 +143,6 @@
             btnUpdate.UseVisualStyleBackColor = false;
             btnUpdate.Click += btnUpdate_Click;
             // 
-            // btnTestLogin
-            // 
-            btnTestLogin.Location = new Point(1068, 31);
-            btnTestLogin.Name = "btnTestLogin";
-            btnTestLogin.Size = new Size(94, 29);
-            btnTestLogin.TabIndex = 12;
-            btnTestLogin.Text = "Test login engine";
-            btnTestLogin.UseVisualStyleBackColor = true;
-            btnTestLogin.Click += btnTestLogin_Click;
-            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -175,7 +162,7 @@
             sidebarControl1.Location = new Point(3, 64);
             sidebarControl1.Margin = new Padding(4);
             sidebarControl1.Name = "sidebarControl1";
-            sidebarControl1.Size = new Size(200, 606);
+            sidebarControl1.Size = new Size(202, 606);
             sidebarControl1.TabIndex = 15;
             sidebarControl1.Load += sidebarControl1_Load;
             // 
@@ -281,6 +268,7 @@
             cmbRole.StartIndex = 0;
             cmbRole.TabIndex = 9;
             cmbRole.UseTallSize = false;
+            cmbRole.SelectedIndexChanged += cmbRole_SelectedIndexChanged_1;
             // 
             // txtFullName
             // 
@@ -383,7 +371,6 @@
             Controls.Add(materialCard1);
             Controls.Add(label6);
             Controls.Add(sidebarControl1);
-            Controls.Add(btnTestLogin);
             Controls.Add(btnUpdate);
             Controls.Add(btnDelete);
             Controls.Add(btnAddUser);
@@ -412,7 +399,6 @@
         private DataGridView dgvUsers;
         private Button btnDelete;
         private Button btnUpdate;
-        private Button btnTestLogin;
         private Label label5;
         private SidebarControl sidebarControl1;
         private MaterialSkin.Controls.MaterialCard materialCard1;

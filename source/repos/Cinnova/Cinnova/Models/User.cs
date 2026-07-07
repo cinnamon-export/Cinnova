@@ -7,7 +7,7 @@ namespace Cinnova.Models
     public class User
     {
         public int UserID { get; set; }
-        // The '?' makes it a nullable integer, which is perfect for database foreign keys
+        // The '?' makes it a nullable integer, perfect for database foreign keys
         public int? EmployeeID { get; set; }
         public string EmployeeName { get; set; } = string.Empty;
         public string Username { get; set; } = string.Empty;
