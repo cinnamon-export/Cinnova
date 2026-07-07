@@ -7,11 +7,13 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Text;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;  
+using System.Runtime.InteropServices;
+using MaterialSkin;
+using MaterialSkin.Controls;
 
 namespace Cinnova.Forms
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : MaterialSkin.Controls.MaterialForm
     {
 
         [DllImport("user32.dll")]
@@ -19,15 +21,39 @@ namespace Cinnova.Forms
         private const int EM_SETMARGINS = 0xD3;
         private const int EC_LEFTMARGIN = 0x1;
 
-        private void SetTextBoxLeftPadding(TextBox tb, int leftPadding)
-        {
-            SendMessage(tb.Handle, EM_SETMARGINS, EC_LEFTMARGIN, leftPadding);
-        }
+
+
         public LoginForm()
         {
             InitializeComponent();
+            // Kill the Material action bar and control box
+            this.FormStyle = FormStyles.ActionBar_None;
+            pictureBox2.Parent = pictureBox1;
+            this.ControlBox = false;
+            this.Text = "";
+
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.Resize += new System.EventHandler(this.LoginForm_Resize);
+
+            // Initialize MaterialSkinManager
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+
+            // Set your brand colors for Cinnova
+            materialSkinManager.ColorScheme = new ColorScheme(
+
+                Primary.Brown800,  // Main header color
+                Primary.Brown900,  // Darker shade
+                Primary.Brown500,  // Lighter shade
+                Accent.Orange700,  // Accent highlights
+                TextShade.WHITE    // Header text color
+            );
+
+
+
+
+
         }
 
         private void picbackground_Click(object sender, EventArgs e)
@@ -60,27 +86,24 @@ namespace Cinnova.Forms
 
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
+        private void LoginForm_Load(object? sender, EventArgs e)
         {
-            
+            // 1. Force the logo into the card
+            pictureBox2.Parent = panelcard;
+            pictureBox2.BackColor = Color.White;
 
+            // 2. Mathematically center the logo horizontally!
+            int logoX = (panelcard.Width - pictureBox2.Width) / 2;
+            pictureBox2.Location = new Point(logoX, 15);
 
+            // 3. Force the Font to be HUGE and Brown (Overrides the framework)
+            label1.Font = new Font("Segoe UI", 20, FontStyle.Bold);
+            label1.ForeColor = Color.SaddleBrown;
 
-            RoundPanel(panelcard, 18);
-            RoundButton(btnsignin, 10);
+            // 4. Center the "Welcome Back" text under the logo
+            int labelX = (panelcard.Width - label1.Width) / 2;
+            label1.Location = new Point(labelX, pictureBox2.Bottom + 15);
 
-            cmbrole.Items.Clear();
-            cmbrole.Items.Add("Owner");
-            cmbrole.Items.Add("Manager");
-            cmbrole.Items.Add("Staff");
-            cmbrole.SelectedIndex = 0;
-
-            txtpassword.UseSystemPasswordChar = true;
-            SetTextBoxLeftPadding(txtusername, 28);
-            SetTextBoxLeftPadding(txtusername, 28);
-
-            txtpassword.GotFocus += (s, ev) => SetTextBoxLeftPadding(txtpassword, 28);
-            txtusername.GotFocus += (s, ev) => SetTextBoxLeftPadding(txtusername, 28);
         }
         private void RoundPanel(Panel panel, int radius)
         {
@@ -111,10 +134,11 @@ namespace Cinnova.Forms
             MessageBox.Show($"Username: '{username}'\nPassword: '{password}'",
         "Debug", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+
+
             string query = $@"SELECT * FROM Users 
                       WHERE Username = '{username}' 
                       AND Password = '{password}'";
-
 
 
 
@@ -122,44 +146,123 @@ namespace Cinnova.Forms
             {
                 var result = DatabaseHelper.ExecuteQuery(query);
 
-                MessageBox.Show($"Rows found: {result.Rows.Count}",
-                    "Debug", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 if (result.Rows.Count > 0)
                 {
-                    string dbrole = result.Rows[0]["Role"].ToString();
-                    MessageBox.Show($"Login OK! Role: {dbrole}", "Success",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string? dbrole = Convert.ToString(result.Rows[0]["Role"]);
 
-                    //DashboardForm dashboard = new DashboardForm(username, dbrole);
-                    // dashboard.Show();
-                    //this.Hide();
+                    // Check for valid roles
+                    if (dbrole == "Owner" || dbrole == "Manager" || dbrole == "Staff")
+                    {
+                        MessageBox.Show($"Login OK! Welcome {dbrole}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        UserManagementForm adminForm = new UserManagementForm();
+                        adminForm.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Access Denied. Role '{dbrole}' is not authorized to access this system.",
+                                        "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtpassword.Clear();
+                        txtpassword.Focus();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Invalid username or password.Please try again.,",
-                        "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Invalid username or password. Please try again.",
+                                    "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtpassword.Clear();
                     txtpassword.Focus();
                 }
-            }
+            } // <--- This closes the 'try' block
             catch (Exception ex)
             {
-                MessageBox.Show($"Database error:{ex.Message}",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                MessageBox.Show($"Database error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } // <--- This closes the 'catch' block
+
         }
+
+
+
+
 
         private void panelcard_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void LoginForm_Resize(object sender, EventArgs e)
+        private void LoginForm_Resize(object? sender, EventArgs e)
         {
-            
+
         }
-        
-        
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtpassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtusername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblusername_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblpassword_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbrolde_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblwelcome_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void lbldesc_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
+
+
+
+
+
 }
