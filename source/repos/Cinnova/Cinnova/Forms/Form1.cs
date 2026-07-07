@@ -341,5 +341,50 @@ VALUES
         {
 
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblQty_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPrice_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblPrice_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlRecords_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnlSummary_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
