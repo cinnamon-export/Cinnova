@@ -43,11 +43,11 @@ namespace Cinnova.Forms
             // Set your brand colors for Cinnova
             materialSkinManager.ColorScheme = new ColorScheme(
 
-                Primary.Brown800,  // Main header color
-                Primary.Brown900,  // Darker shade
-                Primary.Brown500,  // Lighter shade
-                Accent.Orange700,  // Accent highlights
-                TextShade.WHITE    // Header text color
+                Primary.Brown800,  
+                Primary.Brown900,  
+                Primary.Brown500,  
+                Accent.Orange700,  
+                TextShade.WHITE    
             );
 
 
@@ -88,19 +88,19 @@ namespace Cinnova.Forms
 
         private void LoginForm_Load(object? sender, EventArgs e)
         {
-            // 1. Force the logo into the card
+            // Force the logo into the card
             pictureBox2.Parent = panelcard;
             pictureBox2.BackColor = Color.White;
 
-            // 2. Mathematically center the logo horizontally!
+            //  Mathematically center the logo horizontally!
             int logoX = (panelcard.Width - pictureBox2.Width) / 2;
             pictureBox2.Location = new Point(logoX, 15);
 
-            // 3. Force the Font to be HUGE and Brown (Overrides the framework)
+            //  Force the Font to be HUGE and Brown (Overrides the framework)
             label1.Font = new Font("Segoe UI", 20, FontStyle.Bold);
             label1.ForeColor = Color.SaddleBrown;
 
-            // 4. Center the "Welcome Back" text under the logo
+            //  Center the "Welcome Back" text under the logo
             int labelX = (panelcard.Width - label1.Width) / 2;
             label1.Location = new Point(labelX, pictureBox2.Bottom + 15);
 
@@ -130,17 +130,10 @@ namespace Cinnova.Forms
         private void btnsignin_Click(object sender, EventArgs e)
         {
             string username = txtusername.Text.Trim();
-            string password = txtpassword.Text.Trim();
-            MessageBox.Show($"Username: '{username}'\nPassword: '{password}'",
-        "Debug", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string password = txtpassword.Text;
 
-
-
-            string query = $@"SELECT * FROM Users 
-                      WHERE Username = '{username}' 
-                      AND Password = '{password}'";
-
-
+            // Query ONLY by username using your variable
+            string query = $"SELECT * FROM Users WHERE Username = '{username}'";
 
             try
             {
@@ -148,39 +141,59 @@ namespace Cinnova.Forms
 
                 if (result.Rows.Count > 0)
                 {
-                    string? dbrole = Convert.ToString(result.Rows[0]["Role"]);
+                    //  Get the scrambled hash from the database
+                    string? storedHash = result.Rows[0]["Password"].ToString();
 
-                    // Check for valid roles
-                    if (dbrole == "Owner" || dbrole == "Manager" || dbrole == "Staff")
+                    // Get the role from the database
+                    string? dbrole = result.Rows[0]["JobRole"].ToString();
+
+                    //  Let BCrypt compare the typed password against the hidden hash
+                    if (BCrypt.Net.BCrypt.Verify(password, storedHash))
                     {
-                        MessageBox.Show($"Login OK! Welcome {dbrole}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // IT MATCHES! Check authorization...
+                        if (dbrole == "Owner" || dbrole == "Manager" || dbrole == "Staff")
+                        {
+                            MessageBox.Show($"Login OK! Welcome {dbrole}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        UserManagementForm adminForm = new UserManagementForm();
-                        adminForm.Show();
-                        this.Hide();
+                            UserManagementForm adminForm = new UserManagementForm();
+                            adminForm.Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Access Denied. Role '{dbrole}' is not authorized to access this system.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            txtpassword.Clear();
+                            txtpassword.Focus();
+                        }
                     }
                     else
                     {
-                        MessageBox.Show($"Access Denied. Role '{dbrole}' is not authorized to access this system.",
-                                        "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        // Password was wrong
+                        MessageBox.Show("Invalid username or password. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         txtpassword.Clear();
                         txtpassword.Focus();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Invalid username or password. Please try again.",
-                                    "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Username wasn't found in the database at all
+                    MessageBox.Show("Invalid username or password. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtpassword.Clear();
                     txtpassword.Focus();
                 }
-            } // <--- This closes the 'try' block
+            }
             catch (Exception ex)
             {
+                // Safety net for database connection crashes
                 MessageBox.Show($"Database error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } // <--- This closes the 'catch' block
-
+            }
         }
+
+
+
+
+
+
 
 
 

@@ -2,15 +2,13 @@
 {
     partial class LoginForm
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
+        
+        //Required designer variable.
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        
+        // Clean up any resources being used.
+        // <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,10 +20,10 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
+        
+        // Required method for Designer support - do not modify
+        // the contents of this method with the code editor.
+ 
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
@@ -42,9 +40,9 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
+            
             // panelcard
-            // 
+            
             panelcard.Controls.Add(pictureBox2);
             panelcard.Controls.Add(label1);
             panelcard.Controls.Add(materialLabel2);
@@ -58,9 +56,9 @@
             panelcard.Size = new Size(425, 520);
             panelcard.TabIndex = 3;
             panelcard.Paint += panelcard_Paint;
-            // 
+            
             // pictureBox2
-            // 
+            
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(32, 17);
             pictureBox2.Name = "pictureBox2";
@@ -69,9 +67,9 @@
             pictureBox2.TabIndex = 11;
             pictureBox2.TabStop = false;
             pictureBox2.Click += pictureBox2_Click_1;
-            // 
+            
             // label1
-            // 
+            
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             label1.ForeColor = Color.SaddleBrown;
@@ -81,9 +79,9 @@
             label1.TabIndex = 16;
             label1.Text = "Welcome Back";
             label1.Click += label1_Click_1;
-            // 
+             
             // materialLabel2
-            // 
+             
             materialLabel2.AutoSize = true;
             materialLabel2.Depth = 0;
             materialLabel2.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
@@ -95,9 +93,9 @@
             materialLabel2.TabIndex = 15;
             materialLabel2.Text = "Enter your credentials to access the export dashboard.";
             materialLabel2.Click += materialLabel2_Click;
-            // 
+            
             // cmbrole
-            // 
+            
             cmbrole.AutoResize = false;
             cmbrole.BackColor = Color.FromArgb(255, 255, 255);
             cmbrole.Depth = 0;
@@ -121,9 +119,9 @@
             cmbrole.TabIndex = 13;
             cmbrole.UseTallSize = false;
             cmbrole.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
-            // 
+            
             // txtpassword
-            // 
+             
             txtpassword.AnimateReadOnly = false;
             txtpassword.BackgroundImageLayout = ImageLayout.None;
             txtpassword.CharacterCasing = CharacterCasing.Normal;
@@ -152,9 +150,9 @@
             txtpassword.UseSystemPasswordChar = false;
             txtpassword.UseTallSize = false;
             txtpassword.Click += txtpassword_TextChanged;
-            // 
+            
             // txtusername
-            // 
+            
             txtusername.AnimateReadOnly = false;
             txtusername.BackgroundImageLayout = ImageLayout.None;
             txtusername.CharacterCasing = CharacterCasing.Normal;
@@ -183,9 +181,9 @@
             txtusername.UseSystemPasswordChar = false;
             txtusername.UseTallSize = false;
             txtusername.Click += txtusername_TextChanged;
-            // 
+            
             // materialButton1
-            // 
+            
             materialButton1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             materialButton1.BackColor = Color.SaddleBrown;
             materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
@@ -205,9 +203,9 @@
             materialButton1.UseAccentColor = false;
             materialButton1.UseVisualStyleBackColor = false;
             materialButton1.Click += btnsignin_Click;
-            // 
+            
             // pictureBox1
-            // 
+             
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
@@ -218,9 +216,9 @@
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
-            // 
+             
             // LoginForm
-            // 
+            
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
