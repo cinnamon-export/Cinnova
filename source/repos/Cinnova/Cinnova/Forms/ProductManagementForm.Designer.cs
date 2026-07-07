@@ -48,6 +48,8 @@
             btnNotification = new Button();
             grpProductDetails = new GroupBox();
             btnClear = new Button();
+            pnlNotification = new Panel();
+            lblNotifications = new Label();
             btnSave = new Button();
             dtpProductionDate = new DateTimePicker();
             dtpExpireDate = new DateTimePicker();
@@ -63,12 +65,10 @@
             txtProductCode = new TextBox();
             cmbCategory = new ComboBox();
             lblProductCategory = new Label();
-            pnlNotification = new Panel();
-            label11 = new Label();
             panel1 = new Panel();
             btnViewRecords = new Button();
             imageList1 = new ImageList(components);
-            btnClose = new Button();
+            lblNotificationList = new Label();
             pnlSidebar.SuspendLayout();
             pnlProductDetails.SuspendLayout();
             grpProductDetails.SuspendLayout();
@@ -256,7 +256,6 @@
             pnlProductDetails.Controls.Add(lblProductManagement);
             pnlProductDetails.Controls.Add(btnNotification);
             pnlProductDetails.Controls.Add(grpProductDetails);
-            pnlProductDetails.Controls.Add(pnlNotification);
             pnlProductDetails.Location = new Point(241, 0);
             pnlProductDetails.Name = "pnlProductDetails";
             pnlProductDetails.Size = new Size(635, 465);
@@ -279,7 +278,7 @@
             btnNotification.Cursor = Cursors.Hand;
             btnNotification.FlatStyle = FlatStyle.Flat;
             btnNotification.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnNotification.Location = new Point(581, 3);
+            btnNotification.Location = new Point(575, 17);
             btnNotification.Name = "btnNotification";
             btnNotification.Size = new Size(49, 56);
             btnNotification.TabIndex = 0;
@@ -289,8 +288,8 @@
             // 
             // grpProductDetails
             // 
-            grpProductDetails.Controls.Add(btnClose);
             grpProductDetails.Controls.Add(btnClear);
+            grpProductDetails.Controls.Add(pnlNotification);
             grpProductDetails.Controls.Add(btnSave);
             grpProductDetails.Controls.Add(dtpProductionDate);
             grpProductDetails.Controls.Add(dtpExpireDate);
@@ -327,6 +326,27 @@
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = false;
             btnClear.Click += btnClear_Click;
+            // 
+            // pnlNotification
+            // 
+            pnlNotification.AutoScroll = true;
+            pnlNotification.BorderStyle = BorderStyle.FixedSingle;
+            pnlNotification.Controls.Add(lblNotificationList);
+            pnlNotification.Controls.Add(lblNotifications);
+            pnlNotification.Location = new Point(192, 0);
+            pnlNotification.Name = "pnlNotification";
+            pnlNotification.Size = new Size(420, 300);
+            pnlNotification.TabIndex = 0;
+            pnlNotification.Visible = false;
+            // 
+            // lblNotifications
+            // 
+            lblNotifications.AutoSize = true;
+            lblNotifications.Location = new Point(160, -1);
+            lblNotifications.Name = "lblNotifications";
+            lblNotifications.Size = new Size(136, 28);
+            lblNotifications.TabIndex = 0;
+            lblNotifications.Text = "Notifications";
             // 
             // btnSave
             // 
@@ -482,26 +502,6 @@
             lblProductCategory.TabIndex = 0;
             lblProductCategory.Text = "Product Category";
             // 
-            // pnlNotification
-            // 
-            pnlNotification.AutoScroll = true;
-            pnlNotification.BorderStyle = BorderStyle.FixedSingle;
-            pnlNotification.Controls.Add(label11);
-            pnlNotification.Location = new Point(334, 59);
-            pnlNotification.Name = "pnlNotification";
-            pnlNotification.Size = new Size(420, 300);
-            pnlNotification.TabIndex = 0;
-            pnlNotification.Visible = false;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Location = new Point(160, -1);
-            label11.Name = "label11";
-            label11.Size = new Size(112, 25);
-            label11.TabIndex = 0;
-            label11.Text = "Notifications";
-            // 
             // panel1
             // 
             panel1.Controls.Add(btnViewRecords);
@@ -529,14 +529,14 @@
             imageList1.ImageSize = new Size(16, 16);
             imageList1.TransparentColor = Color.Transparent;
             // 
-            // btnClose
+            // lblNotificationList
             // 
-            btnClose.Location = new Point(516, 231);
-            btnClose.Name = "btnClose";
-            btnClose.Size = new Size(112, 34);
-            btnClose.TabIndex = 15;
-            btnClose.Text = "Close";
-            btnClose.UseVisualStyleBackColor = true;
+            lblNotificationList.Location = new Point(5, 48);
+            lblNotificationList.Name = "lblNotificationList";
+            lblNotificationList.Size = new Size(408, 233);
+            lblNotificationList.TabIndex = 1;
+            lblNotificationList.Text = "label12";
+            lblNotificationList.Click += lblNotificationList_Click;
             // 
             // ProductManagementForm
             // 
@@ -606,5 +606,7 @@
         private Button btnViewRecords;
         private Label label11;
         private Button btnClose;
+        private Label lblNotifications;
+        private Label lblNotificationList;
     }
 }

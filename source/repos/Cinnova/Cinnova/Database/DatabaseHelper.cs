@@ -7,8 +7,11 @@ namespace Cinnova.Database
 {
     public class DatabaseHelper
     {
-        private static string connectionString =
-    "Server=localhost\\SQLEXPRESS;Database=CinnovaDB;Integrated Security=True;Encrypt=False";
+       // private static string connectionString =
+   // "Server=Kemeesha\\SQLEXPRESS01;Database=CinnovaDB;Integrated Security=True;Encrypt=False";
+
+         private static string connectionString =
+         "Server=localhost\\SQLEXPRESS;Database=CinnovaDB;Integrated Security=True;Encrypt=False";
 
         public static SqlConnection GetConnection()
         {

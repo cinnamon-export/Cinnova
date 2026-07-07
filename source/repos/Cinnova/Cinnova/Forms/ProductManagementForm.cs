@@ -225,13 +225,69 @@ namespace Cinnova.Forms
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearInputs();
+
         }
 
         private void btnNotification_Click(object sender, EventArgs e)
         {
+            pnlNotification.BringToFront();
+
+            if (!pnlNotification.Visible)
+            {
+                LoadNotifications();
+            }
+
             pnlNotification.Visible = !pnlNotification.Visible;
 
-            
+
         }
+
+        private void lblNotificationList_Click(object sender, EventArgs e)
+        {
+            // Empty method
+        }
+
+        private void LoadNotifications()
+        {
+            string query = @"
+    SELECT ProductCode, ProductType, ExpireDate
+    FROM Production
+    WHERE ExpireDate <= DATEADD(DAY, 7, GETDATE())
+    ORDER BY ExpireDate ASC";
+
+            DataTable dt = DatabaseHelper.ExecuteQuery(query);
+
+            lblNotificationList.Text = "";
+
+            if (dt.Rows.Count == 0)
+            {
+                lblNotificationList.Text = "✅ No notifications.";
+                return;
+            }
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string code = row["ProductCode"].ToString();
+                string type = row["ProductType"].ToString();
+                DateTime expire = Convert.ToDateTime(row["ExpireDate"]);
+
+                string status;
+
+                if (expire.Date < DateTime.Today)
+                    status = "❌ Already Expired";
+                else if (expire.Date == DateTime.Today)
+                    status = "⚠️ Expires Today";
+                else
+                {
+                    int days = (expire.Date - DateTime.Today).Days;
+                    status = $"⚠️ Expires in {days} day(s)";
+                }
+
+                lblNotificationList.Text +=
+                    $"{code} - {type}\r\n{status}\r\n\r\n";
+            }
+        }
+        
+
     }
 }
