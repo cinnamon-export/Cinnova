@@ -12,8 +12,11 @@ using MaterialSkin.Controls;
 
 namespace Cinnova.Forms
 {
-    public partial class UserManagementForm : MaterialForm
+    public partial class UserManagementForm : Form
     {
+        // This is our safety lock to prevent events from firing automatically
+        private bool isLoadingData = false;
+
         public UserManagementForm()
         {
             InitializeComponent();
@@ -72,7 +75,7 @@ namespace Cinnova.Forms
 
         private void cmbRole_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (isLoadingData) return;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -175,7 +178,7 @@ namespace Cinnova.Forms
 
         private void txtSearch_TextChanged(object? sender, EventArgs e)
         {
-
+            if (isLoadingData) return;
 
             // 1. Instantiate your service
             UserService userService = new UserService();
@@ -219,7 +222,33 @@ namespace Cinnova.Forms
 
         private void cmbRole_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+            if (isLoadingData) return;
+        }
+
+        private void dgvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Make sure we actually clicked a valid row (not the header at the top)
+            if (e.RowIndex >= 0)
+            {
+                //  Grab the specific row that was clicked
+                DataGridViewRow row = this.dgvUsers.Rows[e.RowIndex];
+
+                // Pull the data directly from the grid cells and put it into your form controls.
+
+
+                txtFullName.Text = row.Cells["EmployeeName"].Value?.ToString();
+                cmbRole.Text = row.Cells["JobRole"].Value?.ToString();
+                txtUsername.Text = row.Cells["Username"].Value?.ToString();
+
+                // Keep the password blank for security!
+                txtPassword.Clear();
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
 
         }
     }
 }
+
