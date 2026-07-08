@@ -1,0 +1,13 @@
+## .NET Build outputs
+bin/
+obj/
+
+## User-specific files (Visual Studio configuration)
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## IDE folders
+.vs/
+.vscode/

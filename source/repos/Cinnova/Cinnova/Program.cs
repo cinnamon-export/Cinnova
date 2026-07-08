@@ -21,7 +21,12 @@ namespace Cinnova
             // see https://aka.ms/applicationconfiguration.
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+
+            // TEMP - Testing Product Management
+            Application.Run(new ProductManagementForm());
+
+            // ORIGINAL
+            // Application.Run(new LoginForm());
         }
     }
 }

@@ -7,8 +7,11 @@ namespace Cinnova.Database
 {
     public class DatabaseHelper
     {
-        private static string connectionString =
-            "Server=Kemeesha\\SQLEXPRESS01;Database=CinnovaDB; Integrated Security=True;Encrypt=False";
+       // private static string connectionString =
+   // "Server=Kemeesha\\SQLEXPRESS01;Database=CinnovaDB;Integrated Security=True;Encrypt=False";
+
+         private static string connectionString =
+         "Server=localhost\\SQLEXPRESS;Database=CinnovaDB;Integrated Security=True;Encrypt=False";
 
         public static SqlConnection GetConnection()
         {
@@ -25,14 +28,14 @@ namespace Cinnova.Database
                     return true;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 return false;
             }
         }
 
-        public static DataTable ExecuteQuery(string query , params SqlParameter[] parameters)
+        public static DataTable ExecuteQuery(string query, params SqlParameter[] parameters)
         {
             DataTable dt = new DataTable();
             try
@@ -42,7 +45,7 @@ namespace Cinnova.Database
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(query, conn);
 
-                    if (parameters != null) 
+                    if (parameters != null)
                     {
                         cmd.Parameters.AddRange(parameters);
                     }
@@ -57,24 +60,33 @@ namespace Cinnova.Database
             }
             return dt;
         }
-
-        public static bool ExecuteNonQuery(string query)
+        public static bool ExecuteNonQuery(string query, params SqlParameter[] parameters)
         {
             try
             {
                 using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
+
                     SqlCommand cmd = new SqlCommand(query, conn);
+
+                    if (parameters != null)
+                    {
+                        cmd.Parameters.AddRange(parameters);
+                    }
+
                     cmd.ExecuteNonQuery();
                     return true;
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
+                MessageBox.Show("Database Error: " + ex.Message);
                 return false;
             }
-        }
+        
+   
+
+    }
     }
 }
