@@ -8,21 +8,11 @@ using System.Windows.Forms;
 
 namespace Cinnova
 {
-    public partial class SidebarControl : UserControl
+    public partial class Form1 : Form
     {
-        public SidebarControl()
+        public Form1()
         {
             InitializeComponent();
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

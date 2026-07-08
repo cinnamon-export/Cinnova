@@ -747,7 +747,7 @@
             // 
             sidebarControl1.BackColor = Color.FromArgb(76, 38, 16);
             sidebarControl1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            sidebarControl1.Location = new Point(1, 0);
+            sidebarControl1.Location = new Point(-2, 0);
             sidebarControl1.Name = "sidebarControl1";
             sidebarControl1.Size = new Size(200, 580);
             sidebarControl1.TabIndex = 1;

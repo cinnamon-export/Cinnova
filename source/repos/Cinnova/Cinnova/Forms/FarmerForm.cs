@@ -304,6 +304,12 @@ FROM Farmers";
                 da.Fill(dt);
 
                 dgvPurchases.DataSource = dt;
+                dgvPurchases.Columns["PurchaseID"].HeaderText = "Pur.ID";
+                dgvPurchases.Columns["FarmerID"].HeaderText = "Far.ID";
+                dgvPurchases.Columns["QuantityKg"].HeaderText = "Qty";
+                dgvPurchases.Columns["PricePerKg"].HeaderText = "Price";
+                dgvPurchases.Columns["TotalCost"].HeaderText = "Total";
+                dgvPurchases.Columns["PurchaseDate"].HeaderText = "Date";
                 dgvPurchases.ClearSelection();
                 dgvPurchases.CurrentCell = null;
 

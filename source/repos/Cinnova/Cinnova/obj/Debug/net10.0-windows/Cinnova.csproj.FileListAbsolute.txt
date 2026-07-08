@@ -58,3 +58,4 @@ C:\Users\DELL\source\repos\cinnamon-export\Cinnova\source\repos\Cinnova\Cinnova\
 C:\Users\DELL\source\repos\cinnamon-export\Cinnova\source\repos\Cinnova\Cinnova\obj\Debug\net10.0-windows\ref\Cinnova.dll
 C:\Users\DELL\source\repos\cinnamon-export\Cinnova\source\repos\Cinnova\Cinnova\obj\Debug\net10.0-windows\Cinnova.SidebarControl.resources
 C:\Users\DELL\source\repos\cinnamon-export\Cinnova\source\repos\Cinnova\Cinnova\obj\Debug\net10.0-windows\Cinnova.Properties.Resources.resources
+C:\Users\DELL\source\repos\cinnamon-export\Cinnova\source\repos\Cinnova\Cinnova\obj\Debug\net10.0-windows\Cinnova.Form1.resources
