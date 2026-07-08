@@ -29,6 +29,7 @@ namespace Cinnova.Forms
         }
         private void EmployeeForm_Load(object sender, EventArgs e)
         {
+            
             LoadEmployees();
         }
 
@@ -47,7 +48,7 @@ namespace Cinnova.Forms
             Employee emp = new Employee();
 
             emp.FullName = txtemployeename.Text;
-            emp.JobRole = txtjob.Text;
+            emp.JobRole = cmbjobrole.Text;
             emp.Salary = decimal.Parse(txtsalary.Text);
 
             bool result = service.AddEmployee(emp);
@@ -59,7 +60,7 @@ namespace Cinnova.Forms
                 LoadEmployees();
 
                 txtemployeename.Clear();
-                txtjob.Clear();
+                cmbjobrole.SelectedIndex = -1;
                 txtsalary.Clear();
 
                 txtemployeename.Focus();
@@ -77,13 +78,13 @@ namespace Cinnova.Forms
                 Employee emp = new Employee();
                 emp.EmployeeID = int.Parse(this.Tag.ToString());
                 emp.FullName = txtemployeename.Text;
-                emp.JobRole = txtjob.Text;
+                emp.JobRole = cmbjobrole.Text;
                 emp.Salary = decimal.Parse(txtsalary.Text);
 
                 if (service.UpdateEmployee(emp))
                 {
                     MessageBox.Show("Employee updated!");
-                    LoadEmployees();
+                    LoadEmployees();0
                 }
             }
         }
@@ -105,7 +106,7 @@ namespace Cinnova.Forms
         private void btnclear_Click(object sender, EventArgs e)
         {
             txtemployeename.Clear();
-            txtjob.Clear();
+            cmbjobrole.SelectedIndex = -1;
             txtsalary.Clear();
 
             txtemployeename.Focus();
@@ -118,11 +119,18 @@ namespace Cinnova.Forms
                 DataGridViewRow row = dgvemployee.Rows[e.RowIndex];
 
                 txtemployeename.Text = row.Cells["FullName"].Value.ToString();
-                txtjob.Text = row.Cells["JobRole"].Value.ToString();
+                cmbjobrole.Text = row.Cells["JobRole"].Value.ToString();
                 txtsalary.Text = row.Cells["Salary"].Value.ToString();
 
                 this.Tag = row.Cells["EmployeeID"].Value.ToString();
             }
+        }
+
+       
+
+        private void cmbjobrole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

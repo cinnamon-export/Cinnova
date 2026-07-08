@@ -1,0 +1,155 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{369FD9CF-BA3F-4825-981E-CFA06129983B}|Cinnova\\Cinnova.csproj|C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\Cinnova\\Forms\\EmployeeForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{369FD9CF-BA3F-4825-981E-CFA06129983B}|Cinnova\\Cinnova.csproj|solutionrelative:Cinnova\\Forms\\EmployeeForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{369FD9CF-BA3F-4825-981E-CFA06129983B}|Cinnova\\Cinnova.csproj|c:\\users\\senses\\onedrive\\documents\\c# project\\cinnova\\cinnova\\forms\\employeeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{369FD9CF-BA3F-4825-981E-CFA06129983B}|Cinnova\\Cinnova.csproj|solutionrelative:cinnova\\forms\\employeeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{369FD9CF-BA3F-4825-981E-CFA06129983B}|Cinnova\\Cinnova.csproj|C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\cinnova\\forms\\employeeform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{369FD9CF-BA3F-4825-981E-CFA06129983B}|Cinnova\\Cinnova.csproj|solutionrelative:cinnova\\forms\\employeeform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{369FD9CF-BA3F-4825-981E-CFA06129983B}|Cinnova\\Cinnova.csproj|C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\cinnova\\database\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{369FD9CF-BA3F-4825-981E-CFA06129983B}|Cinnova\\Cinnova.csproj|solutionrelative:cinnova\\database\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{369FD9CF-BA3F-4825-981E-CFA06129983B}|Cinnova\\Cinnova.csproj|C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\Cinnova\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{369FD9CF-BA3F-4825-981E-CFA06129983B}|Cinnova\\Cinnova.csproj|solutionrelative:Cinnova\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{369FD9CF-BA3F-4825-981E-CFA06129983B}|Cinnova\\Cinnova.csproj|C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\Cinnova\\Serveices\\Employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{369FD9CF-BA3F-4825-981E-CFA06129983B}|Cinnova\\Cinnova.csproj|solutionrelative:Cinnova\\Serveices\\Employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{369FD9CF-BA3F-4825-981E-CFA06129983B}|Cinnova\\Cinnova.csproj|C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\Cinnova\\Models\\Employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{369FD9CF-BA3F-4825-981E-CFA06129983B}|Cinnova\\Cinnova.csproj|solutionrelative:Cinnova\\Models\\Employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{369FD9CF-BA3F-4825-981E-CFA06129983B}|Cinnova\\Cinnova.csproj|C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\cinnova\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{369FD9CF-BA3F-4825-981E-CFA06129983B}|Cinnova\\Cinnova.csproj|solutionrelative:cinnova\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EmployeeForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\Cinnova\\Forms\\EmployeeForm.Designer.cs",
+              "RelativeDocumentMoniker": "Cinnova\\Forms\\EmployeeForm.Designer.cs",
+              "ToolTip": "C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\Cinnova\\Forms\\EmployeeForm.Designer.cs",
+              "RelativeToolTip": "Cinnova\\Forms\\EmployeeForm.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-07T04:50:04.521Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\Cinnova\\App.config",
+              "RelativeDocumentMoniker": "Cinnova\\App.config",
+              "ToolTip": "C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\Cinnova\\App.config",
+              "RelativeToolTip": "Cinnova\\App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2026-07-04T17:19:42.293Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EmployeeForm.cs",
+              "DocumentMoniker": "C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\Cinnova\\Forms\\EmployeeForm.cs",
+              "RelativeDocumentMoniker": "Cinnova\\Forms\\EmployeeForm.cs",
+              "ToolTip": "C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\Cinnova\\Forms\\EmployeeForm.cs",
+              "RelativeToolTip": "Cinnova\\Forms\\EmployeeForm.cs",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAAAF8AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T17:20:01.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EmployeeForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\Cinnova\\Forms\\EmployeeForm.cs",
+              "RelativeDocumentMoniker": "Cinnova\\Forms\\EmployeeForm.cs",
+              "ToolTip": "C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\Cinnova\\Forms\\EmployeeForm.cs [Design]",
+              "RelativeToolTip": "Cinnova\\Forms\\EmployeeForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T11:12:32.85Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DatabaseHelper.cs",
+              "DocumentMoniker": "C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\Cinnova\\Database\\DatabaseHelper.cs",
+              "RelativeDocumentMoniker": "Cinnova\\Database\\DatabaseHelper.cs",
+              "ToolTip": "C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\Cinnova\\Database\\DatabaseHelper.cs",
+              "RelativeToolTip": "Cinnova\\Database\\DatabaseHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T08:02:41.004Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\Cinnova\\Models\\Employee.cs",
+              "RelativeDocumentMoniker": "Cinnova\\Models\\Employee.cs",
+              "ToolTip": "C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\Cinnova\\Models\\Employee.cs",
+              "RelativeToolTip": "Cinnova\\Models\\Employee.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T17:18:51.992Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Employeeservice.cs",
+              "DocumentMoniker": "C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\Cinnova\\Serveices\\Employeeservice.cs",
+              "RelativeDocumentMoniker": "Cinnova\\Serveices\\Employeeservice.cs",
+              "ToolTip": "C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\Cinnova\\Serveices\\Employeeservice.cs",
+              "RelativeToolTip": "Cinnova\\Serveices\\Employeeservice.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T07:54:59.311Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\Cinnova\\Program.cs",
+              "RelativeDocumentMoniker": "Cinnova\\Program.cs",
+              "ToolTip": "C:\\Users\\SENSES\\OneDrive\\Documents\\C# project\\Cinnova\\Cinnova\\Program.cs",
+              "RelativeToolTip": "Cinnova\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T02:04:27.653Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
